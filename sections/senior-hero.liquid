@@ -10,8 +10,7 @@
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Imagen de fondo (adulto mayor feliz)",
-      "default": "https://picsum.photos/1200/800?grayscale&blur=2"
+      "label": "Imagen de fondo (adulto mayor feliz)"
     },
     {
       "type": "inline_richtext",
@@ -54,7 +53,13 @@
 }
 {% endschema %}
 
-<section class="senior-hero" style="background:url({{ section.settings.hero_image | img_url: '1200x800' }}) center/cover no-repeat;">
+{%- if section.settings.hero_image != blank -%}
+  {%- assign hero_bg_url = section.settings.hero_image | img_url: '1200x800' -%}
+{%- else -%}
+  {%- assign hero_bg_url = 'senior-hero-banner.svg' | asset_url -%}
+{%- endif -%}
+
+<section class="senior-hero" style="background:url({{ hero_bg_url }}) center/cover no-repeat;">
   <div class="overlay" style="background:rgba(255,255,255,0.85);padding:3rem;">
     <h1 class="hero-title" style="font-size:2.5rem;color:#2E2A39;margin:0 0 .5rem;">
       {{ section.settings.title }}
