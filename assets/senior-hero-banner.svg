@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8f1ff"/>
+      <stop offset="1" stop-color="#fff8e8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#6D388B" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="120" r="180" fill="#6D388B" opacity="0.08"/>
+  <circle cx="90" cy="650" r="220" fill="#dd1d1d" opacity="0.06"/>
+
+  <!-- Hero card -->
+  <rect x="90" y="110" width="620" height="580" rx="36" fill="#ffffff" filter="url(#shadow)" opacity="0.94"/>
+
+  <!-- Badge -->
+  <rect x="130" y="155" width="260" height="52" rx="26" fill="#6D388B"/>
+  <text x="260" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff">30 días de garantía</text>
+
+  <!-- Title -->
+  <text x="130" y="285" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#2E2A39">
+    Tranquilidad
+  </text>
+  <text x="130" y="355" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#2E2A39">
+    para tu familia
+  </text>
+
+  <!-- Subtitle -->
+  <text x="130" y="430" font-family="Arial, sans-serif" font-size="30" fill="#555555">
+    Productos seguros y fáciles de usar
+  </text>
+  <text x="130" y="475" font-family="Arial, sans-serif" font-size="30" fill="#555555">
+    para una vida más cómoda.
+  </text>
+
+  <!-- CTA -->
+  <rect x="130" y="535" width="300" height="72" rx="36" fill="#dd1d1d"/>
+  <text x="280" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff">
+    Comprar ahora
+  </text>
+
+  <!-- Illustration: senior couple -->
+  <circle cx="850" cy="280" r="95" fill="#6D388B" opacity="0.18"/>
+  <circle cx="850" cy="260" r="55" fill="#f2c7a8"/>
+  <path d="M790 250c20-60 110-60 130 0" fill="none" stroke="#6D388B" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="820" cy="260" r="5" fill="#2E2A39"/>
+  <circle cx="880" cy="260" r="5" fill="#2E2A39"/>
+  <path d="M835 290c15 15 35 15 50 0" fill="none" stroke="#2E2A39" stroke-width="8" stroke-linecap="round"/>
+
+  <circle cx="960" cy="360" r="75" fill="#f2c7a8"/>
+  <path d="M905 350c15-45 95-45 110 0" fill="none" stroke="#6D388B" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="935" cy="350" r="5" fill="#2E2A39"/>
+  <circle cx="985" cy="350" r="5" fill="#2E2A39"/>
+  <path d="M950 375c12 12 30 12 42 0" fill="none" stroke="#2E2A39" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Stars -->
+  <g transform="translate(725 500)" fill="#ffcc00">
+    <path d="M0,-45 L13,-13 L48,-13 L20,8 L31,43 L0,23 L-31,43 L-20,8 L-48,-13 L-13,-13 Z"/>
+    <path d="M130,-45 L143,-13 L178,-13 L150,8 L161,43 L130,23 L99,43 L110,8 L82,-13 L97,-13 Z"/>
+    <path d="M260,-45 L273,-13 L308,-13 L280,8 L291,43 L260,23 L229,43 L240,8 L212,-13 L227,-13 Z"/>
+  </g>
+  <text x="900" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#2E2A39">
+    +2,800 familias felices
+  </text>
+
+  <!-- Footer note -->
+  <text x="600" y="710" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#666666">
+    Envío gratis · Garantía de devolución · Atención en español
+  </text>
+</svg>

@@ -1,0 +1,79 @@
+{% comment %}
+  Senior Hero – versión accesible para adultos mayores.
+  Uso: Añadir a index.json como primer bloque.
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Senior Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Imagen de fondo (adulto mayor feliz)",
+      "default": "https://picsum.photos/1200/800?grayscale&blur=2"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título principal",
+      "default": "Tranquilidad para tus seres queridos"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Productos seguros y fáciles de usar para una vida más cómoda"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Comprar ahora"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Enlace del botón",
+      "default": "/products/tu-producto"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Mostrar badge de garantía",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "badge_text",
+      "label": "Texto del badge",
+      "default": "30 días de garantía"
+    }
+  ],
+  "presets": [{ "name": "Senior Hero", "category": "Hero" }]
+}
+{% endschema %}
+
+<section class="senior-hero" style="background:url({{ section.settings.hero_image | img_url: '1200x800' }}) center/cover no-repeat;">
+  <div class="overlay" style="background:rgba(255,255,255,0.85);padding:3rem;">
+    <h1 class="hero-title" style="font-size:2.5rem;color:#2E2A39;margin:0 0 .5rem;">
+      {{ section.settings.title }}
+    </h1>
+    <p class="hero-subtitle" style="font-size:1.25rem;color:#555;margin:0 0 1rem;">
+      {{ section.settings.subtitle }}
+    </p>
+    {% if section.settings.show_badge %}
+      <span class="badge" style="background:#6D388B;color:#fff;padding:.3rem .6rem;border-radius:4px;">
+        {{ section.settings.badge_text }}
+      </span>
+    {% endif %}
+    <a href="{{ section.settings.button_url }}" class="btn-primary" style="margin-top:1rem;background:#6D388B;color:#fff;padding:.8rem 1.5rem;border-radius:6px;font-size:1.125rem;">
+      {{ section.settings.button_label }}
+    </a>
+  </div>
+</section>
+
+<style>
+  .senior-hero .overlay { max-width: 800px; margin:auto; text-align:center; }
+  .senior-hero .btn-primary:hover { background:#5a2f73; }
+</style>
