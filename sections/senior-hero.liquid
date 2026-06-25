@@ -10,19 +10,20 @@
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Imagen de fondo (adulto mayor feliz)"
+      "label": "Imagen de fondo (adulto mayor feliz)",
+      "default": "https://picsum.photos/1200/800?grayscale&blur=2"
     },
     {
-      "type": "inline_richtext",
+      "type": "richtext",
       "id": "title",
       "label": "Título principal",
-      "default": "Tranquilidad para tus seres queridos"
+      "default": "<h1 style='font-size:2.5rem;color:#2E2A39;margin:0 0 .5rem;'>Tranquilidad para tus seres queridos</h1>"
     },
     {
-      "type": "inline_richtext",
+      "type": "richtext",
       "id": "subtitle",
       "label": "Subtítulo",
-      "default": "Productos seguros y fáciles de usar para una vida más cómoda"
+      "default": "<p style='font-size:1.25rem;color:#555;margin:0 0 1rem;'>Productos seguros y fáciles de usar para una vida más cómoda</p>"
     },
     {
       "type": "text",
@@ -33,7 +34,8 @@
     {
       "type": "url",
       "id": "button_url",
-      "label": "Enlace del botón"
+      "label": "Enlace del botón",
+      "default": "/collections/all"
     },
     {
       "type": "checkbox",
@@ -42,7 +44,7 @@
       "default": true
     },
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "badge_text",
       "label": "Texto del badge",
       "default": "30 días de garantía"
@@ -58,28 +60,21 @@
   {%- assign hero_bg_url = 'senior-hero-banner.svg' | asset_url -%}
 {%- endif -%}
 
-{%- assign button_link = section.settings.button_url | default: '/collections/all' -%}
-
 <section class="senior-hero" style="background:url({{ hero_bg_url }}) center/cover no-repeat;">
-  <div class="overlay" style="background:rgba(255,255,255,0.85);padding:3rem;">
-    <h1 class="hero-title" style="font-size:2.5rem;color:#2E2A39;margin:0 0 .5rem;">
-      {{ section.settings.title }}
-    </h1>
-    <p class="hero-subtitle" style="font-size:1.25rem;color:#555;margin:0 0 1rem;">
-      {{ section.settings.subtitle }}
-    </p>
+  <div class="overlay" style="background:rgba(255,255,255,0.85);padding:3rem;max-width:800px;margin:auto;text-align:center;">
+    {{ section.settings.title | raw }}
+    {{ section.settings.subtitle | raw }}
     {% if section.settings.show_badge %}
-      <span class="badge" style="background:#6D388B;color:#fff;padding:.3rem .6rem;border-radius:4px;">
+      <span class="badge" style="background:#6D388B;color:#fff;padding:.3rem .6rem;border-radius:4px;display:inline-block;margin:0.5rem 0;">
         {{ section.settings.badge_text }}
       </span>
     {% endif %}
-    <a href="{{ button_link }}" class="btn-primary" style="margin-top:1rem;background:#6D388B;color:#fff;padding:.8rem 1.5rem;border-radius:6px;font-size:1.125rem;">
+    <a href="{{ section.settings.button_url }}" class="btn-primary" style="margin-top:1rem;background:#6D388B;color:#fff;padding:.8rem 1.5rem;border-radius:6px;font-size:1.125rem;display:inline-block;">
       {{ section.settings.button_label }}
     </a>
   </div>
 </section>
 
 <style>
-  .senior-hero .overlay { max-width: 800px; margin:auto; text-align:center; }
   .senior-hero .btn-primary:hover { background:#5a2f73; }
 </style>

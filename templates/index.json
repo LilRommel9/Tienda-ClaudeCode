@@ -5,6 +5,11 @@
       "blocks": {},
       "settings": {}
     },
+    "product_feature": {
+      "type": "product-feature",
+      "blocks": {},
+      "settings": {}
+    },
     "benefits": {
       "type": "icon-bar",
       "blocks": {
@@ -70,53 +75,6 @@
         "color_scheme":"background-1"
       }
     },
-    "producto_principal": {
-      "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {
-            "text_size":"h1",
-            "title_alignment":"center",
-            "uppercase_title":false
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "layout":"price_first",
-            "price_color":"accent-1",
-            "compare_price_color":"text",
-            "displayed_badge":"sale",
-            "icon_scale":140
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout":false,
-            "skip_cart":false,
-            "uppercase_text":true,
-            "icon_scale":120,
-            "icon_spacing":10,
-            "display_price":false,
-            "enable_custom_color":false,
-            "custom_color":"#53af01"
-          }
-        }
-      },
-      "block_order":["title","price","buy_buttons"],
-      "settings": {
-        "display_variant_image_first":false,
-        "disable_prepend":true,
-        "hide_variants":false,
-        "variant_image_filtering":"none",
-        "image_zoom":"none",
-        "media_size":"medium",
-        "media_position":"left",
-        "gallery_layout":"thumbnail_slider"
-      }
-    },
     "promo": {
       "type": "promo-popup",
       "blocks": {},
@@ -133,9 +91,9 @@
   },
   "order": [
     "hero",
+    "product_feature",
     "benefits",
     "testimonios",
-    "producto_principal",
     "promo"
   ]
 }
