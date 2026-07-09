@@ -1,0 +1,122 @@
+{% comment %}
+  Barbas Bracelets landing page section
+{% endcomment %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbas Bracelets – Streetwear Premium Jewelry</title>
+  <meta name="description" content="Descubre los originales Barbas Bracelets — donde la herencia mexicana se fusiona con el estilo urbano de lujo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ... existing CSS ... */
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  {% render 'navbar' %}
+
+  <!-- HERO -->
+  {% render 'senior-hero' %}
+
+  <!-- COLLECTIONS and PRODUCTS -->
+  <section id="colecciones" class="collections">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Colecciones Exclusivas</p>
+        <h2 class="font-cinzel section-title">Los Más Vendidos de <span class="gold-text">Barbas Bracelets</span></h2>
+        <p class="section-desc">Explora las piezas más codiciadas...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <section id="tienda" class="products">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Tienda Oficial</p>
+        <h2 class="font-cinzel section-title">Nuestros <span class="gold-text">Brazaletes</span></h2>
+        <p class="section-desc">Cada pieza es diseñada para quienes viven el estilo urbano de lujo sin compromisos.</p>
+      </div>
+      <div class="products-grid">
+        {% assign product_handles = "cuban-link-24k,crown-royale,gothic-cross,iced-out,leather-gold,skull-empire" | split: "," %}
+        {% for handle in product_handles %}
+          {% assign product = all_products[handle] %}
+          {% if product != nil %}
+            <div class="product-card" data-category="{{ product.collections.first.title }}">
+              <div class="product-image">
+                <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+                {% if product.tags contains 'best-seller' %}<span class="product-tag gold-gradient">Más Vendido</span>{% endif %}
+                {% if product.compare_at_price > product.price %}<span class="product-discount">-{{ product.compare_at_price | minus: product.price | divided_by: product.compare_at_price | times: 100 | round }}%</span>{% endif %}
+                <button class="product-add-btn gold-gradient" onclick="shopifyAddToCart({{ product.variants.first.id }})">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </button>
+              </div>
+              <div class="product-info">
+                <p class="product-collection">{{ product.collections.first.title }}</p>
+                <h3 class="font-cinzel product-name">{{ product.title }}</h3>
+                <div class="product-rating">
+                  {% assign rating = product.metafields.custom.rating | default: 5 %}
+                  {% for i in (1..5) %}
+                    <span class="star">{% if i <= rating %}★{% else %}☆{% endif %}</span>
+                  {% endfor %}
+                  <span class="rating-value">{{ rating }}</span>
+                </div>
+                <ul class="product-features">
+                  {% for tag in product.tags limit:3 %}
+                    <li class="product-feature">{{ tag }}</li>
+                  {% endfor %}
+                </ul>
+                <div class="product-price">
+                  <span class="font-cinzel price-current gold-text">MXN${{ product.price | money_without_currency }}</span>
+                  {% if product.compare_at_price > product.price %}<span class="price-original">MXN${{ product.compare_at_price | money_without_currency }}</span>{% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  {% render 'footer' %}
+
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/5215512345678?text=Hola!" class="whatsapp-btn" target="_blank">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color: white;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.638 1.966 14.167.94 11.54.94c-5.44 0-9.865 4.37-9.869 9.8-.001 1.724.453 3.41 1.32 4.893l-.994 3.629 3.73-.974zm12.013-6.024c-.3-.15-1.771-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.951 1.174-.174.2-.35.225-.65.075-.3-.15-1.263-.465-2.407-1.485-.89-.793-1.49-1.773-1.665-2.073-.174-.3-.019-.462.13-.611.135-.135.3-.35.45-.525.15-.174.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.631-.926-2.235-.244-.596-.492-.514-.677-.523-.174-.008-.375-.01-.576-.01-.2 0-.527.075-.802.375-.276.3-1.053 1.03-1.053 2.515s1.08 2.916 1.23 3.116c.15.2 2.126 3.245 5.15 4.553.719.311 1.28.497 1.718.637.721.229 1.378.196 1.898.118.579-.087 1.771-.725 2.021-1.425.25-.7.25-1.3.175-1.425-.075-.125-.275-.2-.575-.35z"/></svg>
+    <span class="whatsapp-badge">1</span>
+  </a>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Shopify Ajax Add to Cart
+    function shopifyAddToCart(variantId) {
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: variantId, quantity: 1 })
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        // Update cart badge
+        fetch('/cart.js')
+          .then(r => r.json())
+          .then(cart => {
+            document.getElementById('cartBadge').textContent = cart.item_count;
+          });
+        showToast('¡Añadido!','Producto añadido al carrito.','Ver Carrito','window.location.href="/checkout"','Seguir comprando','');
+      })
+      .catch(err => {
+        console.error(err);
+        showToast('Error','No se pudo añadir al carrito.','Intentar de nuevo','', '', '');
+      });
+    }
+    // Existing toast functions remain unchanged
+  </script>
+</body>
+</html>

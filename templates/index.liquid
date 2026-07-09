@@ -1,0 +1,1644 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbas Bracelets – Streetwear Premium Jewelry</title>
+  <meta name="description" content="Descubre los originales Barbas Bracelets — donde la herencia mexicana se fusiona con el estilo urbano de lujo. Brazaletes con acabados en oro de 24K y pedrería premium.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E4CC6E;
+      --gold-dark: #9E7B2B;
+      --dark: #0A0A0A;
+      --dark-light: #141414;
+      --dark-card: #1A1A1A;
+      --dark-border: #2A2A2A;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: #fff;
+      line-height: 1.6;
+    }
+    
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    
+    .gold-gradient { background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light)); }
+    .gold-text {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .animate-float { animation: float 3s ease-in-out infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid rgba(201,168,76,0.3);
+      transition: border-color 0.3s;
+    }
+    .logo:hover .logo-img { border-color: var(--gold); }
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-title { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.1em; }
+    .logo-subtitle { font-size: 10px; letter-spacing: 0.3em; color: rgba(201,168,76,0.7); text-transform: uppercase; }
+    
+    .nav-links { display: none; gap: 2rem; }
+    .nav-link {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .cart-btn {
+      position: relative;
+      padding: 8px;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.3s;
+    }
+    .cart-btn:hover { color: var(--gold); }
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-btn { display: block; padding: 8px; color: rgba(255,255,255,0.7); }
+    
+    @media (min-width: 1024px) {
+      .nav-links { display: flex; }
+      .menu-btn { display: none; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url("{{ 'hero-bg.jpg' | asset_url }}") center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.8), rgba(10,10,10,0.5), var(--dark));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      text-align: center;
+      padding: 5rem 1rem 2rem;
+    }
+    .hero-tag {
+      font-size: 0.75rem;
+      color: rgba(201,168,76,0.8);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero-desc {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dark);
+      transition: opacity 0.3s;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(201,168,76,0.1); }
+    
+    .scroll-indicator { margin-top: 3rem; }
+    .scroll-line {
+      width: 1px;
+      height: 64px;
+      margin: 0 auto;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    }
+    .scroll-text {
+      font-size: 10px;
+      color: rgba(201,168,76,0.4);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+    
+    @media (min-width: 640px) {
+      .hero-buttons { flex-direction: row; justify-content: center; }
+    }
+
+    /* ===== FEATURED IMAGES ===== */
+    .featured { padding: 5rem 0; background: var(--dark); }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .featured-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .featured-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+    .featured-card:hover img { transform: scale(1.1); }
+    .featured-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--dark), transparent 50%);
+    }
+    .featured-info {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 2;
+    }
+    .featured-tag {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: rgba(201,168,76,0.7);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .featured-name { font-size: 1.25rem; font-weight: 700; }
+    
+    @media (min-width: 768px) {
+      .featured-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      padding: 6rem 0;
+      background: var(--dark-light);
+      position: relative;
+    }
+    .section-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image { position: relative; }
+    .about-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    .about-stat {
+      position: absolute;
+      bottom: -24px;
+      right: 24px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 1.5rem;
+      max-width: 240px;
+    }
+    .about-stat-number { font-size: 1.875rem; font-weight: 700; }
+    .about-stat-text { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    
+    .section-tag {
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: rgba(201,168,76,0.7);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .about-text {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.25rem;
+    }
+    .about-text strong { color: #fff; }
+    
+    .about-badges {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .about-badge-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--dark-border);
+    }
+    .about-badge-value { font-size: 1.5rem; font-weight: 700; }
+    .about-badge-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    
+    @media (min-width: 1024px) {
+      .about-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ===== COLLECTIONS ===== */
+    .collections { padding: 6rem 0; background: var(--dark); }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-desc {
+      color: rgba(255,255,255,0.5);
+      max-width: 600px;
+      margin: 1rem auto 0;
+    }
+    
+    .collection-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 4rem;
+    }
+    .collection-tab {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--dark-border);
+      color: rgba(255,255,255,0.5);
+      transition: all 0.3s;
+    }
+    .collection-tab:hover,
+    .collection-tab.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+    }
+    
+    .promo-banner {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+    .promo-content { display: flex; align-items: center; gap: 1rem; }
+    .promo-percent {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--dark);
+    }
+    .promo-title { font-weight: 700; color: var(--dark); }
+    .promo-subtitle { font-size: 0.75rem; color: rgba(10,10,10,0.7); }
+    .promo-btn {
+      background: var(--dark);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      white-space: nowrap;
+      transition: background 0.3s;
+    }
+    .promo-btn:hover { background: var(--dark-light); }
+    
+    @media (min-width: 640px) {
+      .promo-banner { flex-direction: row; justify-content: space-between; text-align: left; }
+      .promo-percent { font-size: 2.5rem; }
+    }
+
+    /* ===== PRODUCTS ===== */
+    .products { padding: 6rem 0; background: var(--dark-light); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .product-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      overflow: hidden;
+      transition: border-color 0.5s;
+    }
+    .product-card:hover { border-color: rgba(201,168,76,0.3); }
+    
+    .product-image {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+    .product-card:hover .product-image img { transform: scale(1.1); }
+    .product-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--dark-card), transparent 40%);
+      opacity: 0.6;
+    }
+    
+    .product-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+      z-index: 2;
+    }
+    .product-discount {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #dc2626;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 10px;
+      font-weight: 700;
+      z-index: 2;
+    }
+    .product-add-btn {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .product-card:hover .product-add-btn { opacity: 1; }
+    
+    .product-info { padding: 1.25rem; }
+    .product-collection {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: rgba(201,168,76,0.6);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .product-name {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+    .product-card:hover .product-name { color: var(--gold); }
+    
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 0.75rem;
+    }
+    .star { color: var(--gold); font-size: 12px; }
+    .rating-value { font-size: 11px; color: rgba(255,255,255,0.4); margin-left: 4px; }
+    
+    .product-features { margin-bottom: 1rem; }
+    .product-feature {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .product-feature::before {
+      content: '•';
+      color: var(--gold);
+      margin-top: 1px;
+    }
+    
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .price-current { font-size: 1.25rem; font-weight: 700; }
+    .price-original {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.3);
+      text-decoration: line-through;
+    }
+    
+    @media (min-width: 640px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    }
+
+    /* ===== WHY US ===== */
+    .why-us { padding: 6rem 0; background: var(--dark); }
+    .why-us-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .features { margin-top: 3rem; }
+    .feature {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .feature-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--dark-border);
+      background: var(--dark-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      transition: border-color 0.3s;
+    }
+    .feature:hover .feature-icon { border-color: rgba(201,168,76,0.4); }
+    .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .feature-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+    
+    .why-us-image { position: relative; }
+    .why-us-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+    }
+    .why-us-image::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(201,168,76,0.1);
+      z-index: -1;
+    }
+    
+    @media (min-width: 1024px) {
+      .why-us-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { padding: 6rem 0; background: var(--dark-light); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 2rem;
+      transition: border-color 0.3s;
+    }
+    .testimonial-card:hover { border-color: rgba(201,168,76,0.3); }
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 1rem;
+    }
+    .testimonial-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-author { font-size: 0.875rem; font-weight: 700; }
+    .testimonial-location { font-size: 11px; color: rgba(201,168,76,0.5); }
+    
+    @media (min-width: 768px) {
+      .testimonials-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      padding: 6rem 0;
+      background: var(--dark);
+      position: relative;
+    }
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.05), transparent 70%);
+    }
+    .newsletter-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 500px;
+      margin: 2.5rem auto 0;
+    }
+    .newsletter-input {
+      flex: 1;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+    .newsletter-input:focus { border-color: rgba(201,168,76,0.5); }
+    .newsletter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 1rem 2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dark);
+      transition: opacity 0.3s;
+    }
+    .newsletter-btn:hover { opacity: 0.9; }
+    .newsletter-disclaimer {
+      font-size: 10px;
+      color: rgba(255,255,255,0.2);
+      margin-top: 1rem;
+    }
+    
+    @media (min-width: 640px) {
+      .newsletter-form { flex-direction: row; }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--dark-light);
+      border-top: 1px solid var(--dark-border);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .footer-brand { grid-column: span 1; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 1.25rem; }
+    .footer-logo-img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .footer-logo-text { font-size: 1.125rem; font-weight: 700; }
+    .footer-logo-sub {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: rgba(201,168,76,0.5);
+      text-transform: uppercase;
+    }
+    .footer-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.25rem;
+    }
+    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      transition: all 0.3s;
+    }
+    .footer-social-link:hover {
+      color: var(--gold);
+      border-color: rgba(201,168,76,0.4);
+    }
+    
+    .footer-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-link {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s;
+    }
+    .footer-link:hover { color: var(--gold); }
+    
+    .footer-contact li {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.75rem;
+    }
+    .footer-payment {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+    }
+    .footer-payment-title {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(201,168,76,0.6);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .footer-payment-methods { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+    
+    .footer-bottom {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--dark-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-copyright { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal-link {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s;
+    }
+    .footer-legal-link:hover { color: rgba(201,168,76,0.5); }
+    
+    @media (min-width: 640px) {
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: span 2; }
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+    }
+    @media (min-width: 1024px) {
+      .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+      .footer-brand { grid-column: span 1; }
+    }
+
+    /* ===== WHATSAPP BUTTON ===== */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 50;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .whatsapp-btn:hover { background: #128C7E; transform: scale(1.05); }
+    .whatsapp-badge {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      width: 20px;
+      height: 20px;
+      background: #dc2626;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: var(--dark-light);
+      border-top: 1px solid var(--dark-border);
+      padding: 1.5rem;
+      z-index: 49;
+    }
+    .mobile-menu.active { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ===== NOTIFICATIONS TOAST ===== */
+    .toast-container {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 360px;
+      width: calc(100% - 48px);
+    }
+    .toast-card {
+      background: var(--dark-card);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 4px 12px rgba(201,168,76,0.15);
+      transform: translateX(120%);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .toast-card.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .toast-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--dark-border);
+      padding-bottom: 4px;
+    }
+    .toast-title {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+    }
+    .toast-close {
+      color: rgba(255,255,255,0.4);
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .toast-close:hover { color: #fff; }
+    .toast-body {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+    }
+    .toast-footer {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .toast-btn {
+      flex: 1;
+      padding: 6px 12px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+      border: 1px solid var(--gold);
+      transition: all 0.3s;
+    }
+    .toast-btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+    }
+    .toast-btn-primary:hover {
+      background: var(--gold-light);
+    }
+    .toast-btn-secondary {
+      color: var(--gold);
+      background: transparent;
+    }
+    .toast-btn-secondary:hover {
+      background: rgba(201,168,76,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="#inicio" class="logo">
+        <img src="{{ 'logo.png' | asset_url }}" alt="Barbas Bracelets" class="logo-img">
+        <div class="logo-text">
+          <span class="font-cinzel logo-title gold-text">BARBAS</span>
+          <span class="font-cinzel logo-subtitle">Bracelets</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#colecciones" class="nav-link">Colecciones</a>
+        <a href="#nosotros" class="nav-link">Nosotros</a>
+        <a href="#porque" class="nav-link">Por Qué Elegirnos</a>
+        <a href="#tienda" class="nav-link">Tienda</a>
+      </div>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCartPreview()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="menu-btn" onclick="toggleMenu()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+    <a href="#colecciones" onclick="toggleMenu()">Colecciones</a>
+    <a href="#nosotros" onclick="toggleMenu()">Nosotros</a>
+    <a href="#porque" onclick="toggleMenu()">Por Qué Elegirnos</a>
+    <a href="#tienda" onclick="toggleMenu()">Tienda</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Streetwear Premium Jewelry</p>
+      <h1 class="font-cinzel hero-title">
+        <span>El Imperio</span><br>
+        <span class="gold-text">del Street-Luxury</span>
+      </h1>
+      <p class="hero-desc">
+        Descubre los originales Barbas Bracelets — donde la herencia mexicana
+        se fusiona con el estilo urbano de lujo. Desde acabados en oro de 24K
+        hasta pedrería premium, luce el símbolo de estatus de toda la Raza.
+      </p>
+      <div class="hero-buttons">
+        <a href="#tienda" class="btn-primary gold-gradient">Explorar Colección</a>
+        <a href="#nosotros" class="btn-secondary">Nuestra Historia</a>
+      </div>
+      <div class="scroll-indicator animate-float">
+        <div class="scroll-line"></div>
+        <p class="scroll-text">Scroll</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="featured">
+    <div class="container">
+      <div class="featured-grid">
+        <div class="featured-card">
+          <img src="https://images.pexels.com/photos/32025019/pexels-photo-32025019.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Brazalete Cuban Link">
+          <div class="featured-info">
+            <p class="featured-tag font-cinzel">Colección</p>
+            <p class="featured-name font-cinzel">Cuban Links 24K</p>
+          </div>
+        </div>
+        <div class="featured-card">
+          <img src="https://images.pexels.com/photos/12915487/pexels-photo-12915487.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Brazalete Crown Beaded">
+          <div class="featured-info">
+            <p class="featured-tag font-cinzel">Edición Limitada</p>
+            <p class="featured-name font-cinzel">Crown Beaded</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="nosotros" class="about">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://images.pexels.com/photos/8276126/pexels-photo-8276126.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Estilo urbano de lujo">
+          <div class="about-stat">
+            <p class="font-cinzel about-stat-number gold-text">+5K</p>
+            <p class="about-stat-text">Piezas vendidas en toda la República</p>
+          </div>
+        </div>
+        <div>
+          <p class="section-tag">La Leyenda de</p>
+          <h2 class="font-cinzel section-title">Barbas <span class="gold-text">Bracelets</span></h2>
+          <p class="about-text">
+            Fundada con pura garra y el esfuerzo del <em>"hustle"</em> en
+            las calles, esta marca se forjó desde abajo. De vender unas
+            cuantas pulseras en mercados locales a generar miles de ventas en
+            toda la República, <strong>Barbas Bracelets</strong> representa
+            la historia de éxito definitiva.
+          </p>
+          <p class="about-text">
+            No solo vendemos brazaletes; entregamos una pieza de identidad
+            para quienes priorizan la originalidad y el trabajo duro. Cada
+            pieza es diseñada con materiales de la más alta calidad,
+            acabados en oro de 24K, cromo y pedrería artesanal.
+          </p>
+          <p class="about-text">
+            Nuestra misión es llevar el street-luxury mexicano al mundo,
+            fusionando la herencia cultural con el diseño contemporáneo más
+            exclusivo.
+          </p>
+          <div class="about-badges">
+            <div>
+              <p class="font-cinzel about-badge-value gold-text">24K</p>
+              <p class="about-badge-label">Oro Real</p>
+            </div>
+            <div class="about-badge-divider"></div>
+            <div>
+              <p class="font-cinzel about-badge-value gold-text">100%</p>
+              <p class="about-badge-label">Artesanal</p>
+            </div>
+            <div class="about-badge-divider"></div>
+            <div>
+              <p class="font-cinzel about-badge-value gold-text">MX</p>
+              <p class="about-badge-label">Hecho en México</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section id="colecciones" class="collections">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Colecciones Exclusivas</p>
+        <h2 class="font-cinzel section-title">Los Más Vendidos de <span class="gold-text">Barbas Bracelets</span></h2>
+        <p class="section-desc">
+          Explora las piezas más codiciadas de la cultura street-luxury. Cada
+          brazalete es un símbolo de identidad y éxito, fabricado con
+          materiales de la más alta calidad.
+        </p>
+      </div>
+      <div class="collection-tabs">
+        <button class="collection-tab active" onclick="filterCategory('all', this)">Todos</button>
+        <button class="collection-tab" onclick="filterCategory('Cuban Links', this)">Cuban Links</button>
+        <button class="collection-tab" onclick="filterCategory('Crown Royale', this)">Crown Royale</button>
+        <button class="collection-tab" onclick="filterCategory('Gothic Cross', this)">Gothic Cross</button>
+        <button class="collection-tab" onclick="filterCategory('Iced Out', this)">Iced Out</button>
+        <button class="collection-tab" onclick="filterCategory('Leather & Gold', this)">Leather & Gold</button>
+        <button class="collection-tab" onclick="filterCategory('Skull Empire', this)">Skull Empire</button>
+      </div>
+      <div class="promo-banner gold-gradient">
+        <div class="promo-content">
+          <span class="font-cinzel promo-percent">30%</span>
+          <div>
+            <p class="font-cinzel promo-title">OFF EN TODA LA TIENDA</p>
+            <p class="promo-subtitle">Promoción por tiempo limitado · Envío gratis en compras +$1,500</p>
+          </div>
+        </div>
+        <a href="#tienda" class="promo-btn">Comprar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="tienda" class="products">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Tienda Oficial</p>
+        <h2 class="font-cinzel section-title">Nuestros <span class="gold-text">Brazaletes</span></h2>
+        <p class="section-desc">
+          Cada pieza es diseñada para quienes viven el estilo urbano de lujo
+          sin compromisos.
+        </p>
+      </div>
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card" data-category="Cuban Links">
+          <div class="product-image">
+            <img src="{{ 'bracelet-1.jpg' | asset_url }}" alt="Cuban Link 24K Gold">
+            <span class="product-tag gold-gradient">Más Vendido</span>
+            <span class="product-discount">-30%</span>
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Cuban Link 24K Gold', 3150, '{{ \'bracelet-1.jpg\' | asset_url }}')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-collection">Cuban Links</p>
+            <h3 class="font-cinzel product-name">Cuban Link 24K Gold</h3>
+            <div class="product-rating">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="rating-value">4.9</span>
+            </div>
+            <ul class="product-features">
+              <li class="product-feature">Eslabones cubanos con baño de oro amarillo de 24K real</li>
+              <li class="product-feature">Incrustaciones de micro-pedrería colocada a mano</li>
+              <li class="product-feature">Cierre de seguridad doble con grabado personalizado</li>
+            </ul>
+            <div class="product-price">
+              <span class="font-cinzel price-current gold-text">MXN$3,150</span>
+              <span class="price-original">MXN$4,500</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-card" data-category="Crown Royale">
+          <div class="product-image">
+            <img src="{{ 'bracelet-2.jpg' | asset_url }}" alt="Crown Beaded Obsidian">
+            <span class="product-tag gold-gradient">Edición Limitada</span>
+            <span class="product-discount">-30%</span>
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Crown Beaded Obsidian', 1960, '{{ \'bracelet-2.jpg\' | asset_url }}')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-collection">Crown Royale</p>
+            <h3 class="font-cinzel product-name">Crown Beaded Obsidian</h3>
+            <div class="product-rating">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="rating-value">4.8</span>
+            </div>
+            <ul class="product-features">
+              <li class="product-feature">Cuentas de ónix negro natural pulido a mano</li>
+              <li class="product-feature">Dije central de corona con baño de oro rosa</li>
+              <li class="product-feature">Empaque de colección con caja premium</li>
+            </ul>
+            <div class="product-price">
+              <span class="font-cinzel price-current gold-text">MXN$1,960</span>
+              <span class="price-original">MXN$2,800</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card" data-category="Gothic Cross">
+          <div class="product-image">
+            <img src="{{ 'bracelet-3.jpg' | asset_url }}" alt="Gothic Cross Chrome">
+            <span class="product-tag gold-gradient">Premium</span>
+            <span class="product-discount">-30%</span>
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Gothic Cross Chrome', 3640, '{{ \'bracelet-3.jpg\' | asset_url }}')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-collection">Gothic Cross</p>
+            <h3 class="font-cinzel product-name">Gothic Cross Chrome</h3>
+            <div class="product-rating">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="rating-value">4.9</span>
+            </div>
+            <ul class="product-features">
+              <li class="product-feature">Cadena pesada de eslabones en cromo pulido</li>
+              <li class="product-feature">Cruz gótica central con cristales Swarovski</li>
+              <li class="product-feature">Full Set con caja y certificado de autenticidad</li>
+            </ul>
+            <div class="product-price">
+              <span class="font-cinzel price-current gold-text">MXN$3,640</span>
+              <span class="price-original">MXN$5,200</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product-card" data-category="Iced Out">
+          <div class="product-image">
+            <img src="{{ 'bracelet-4.jpg' | asset_url }}" alt="Iced Out Rose Tennis">
+            <span class="product-tag gold-gradient">Exclusivo</span>
+            <span class="product-discount">-30%</span>
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Iced Out Rose Tennis', 4760, '{{ \'bracelet-4.jpg\' | asset_url }}')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-collection">Iced Out</p>
+            <h3 class="font-cinzel product-name">Iced Out Rose Tennis</h3>
+            <div class="product-rating">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="rating-value">5.0</span>
+            </div>
+            <ul class="product-features">
+              <li class="product-feature">Brazalete tipo tennis con baño de oro rosa de 24K</li>
+              <li class="product-feature">Cubic zirconia AAA+ de alta densidad en cada eslabón</li>
+              <li class="product-feature">Broche de presión oculto con sistema anti-caída</li>
+            </ul>
+            <div class="product-price">
+              <span class="font-cinzel price-current gold-text">MXN$4,760</span>
+              <span class="price-original">MXN$6,800</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 5 -->
+        <div class="product-card" data-category="Leather & Gold">
+          <div class="product-image">
+            <img src="{{ 'bracelet-5.jpg' | asset_url }}" alt="Leather & Gold Duo Set">
+            <span class="product-tag gold-gradient">Set Completo</span>
+            <span class="product-discount">-30%</span>
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Leather & Gold Duo Set', 2520, '{{ \'bracelet-5.jpg\' | asset_url }}')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-collection">Leather & Gold</p>
+            <h3 class="font-cinzel product-name">Leather & Gold Duo Set</h3>
+            <div class="product-rating">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span>
+              <span class="rating-value">4.7</span>
+            </div>
+            <ul class="product-features">
+              <li class="product-feature">Set de 2 piezas: cuero trenzado + cadena de oro</li>
+              <li class="product-feature">Piel genuina italiana con cierre magnético dorado</li>
+              <li class="product-feature">Presentación en estuche doble de lujo</li>
+            </ul>
+            <div class="product-price">
+              <span class="font-cinzel price-current gold-text">MXN$2,520</span>
+              <span class="price-original">MXN$3,600</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 6 -->
+        <div class="product-card" data-category="Skull Empire">
+          <div class="product-image">
+            <img src="{{ 'bracelet-6.jpg' | asset_url }}" alt="Skull Empire Black">
+            <span class="product-tag gold-gradient">Dark Luxury</span>
+            <span class="product-discount">-30%</span>
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Skull Empire Black', 2800, '{{ \'bracelet-6.jpg\' | asset_url }}')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-collection">Skull Empire</p>
+            <h3 class="font-cinzel product-name">Skull Empire Black</h3>
+            <div class="product-rating">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="rating-value">4.8</span>
+            </div>
+            <ul class="product-features">
+              <li class="product-feature">Cadena de eslabones en acero inoxidable negro mate</li>
+              <li class="product-feature">Calavera central con micro-pedrería de cristales rojos</li>
+              <li class="product-feature">Pieza de colección numerada y limitada</li>
+            </ul>
+            <div class="product-price">
+              <span class="font-cinzel price-current gold-text">MXN$2,800</span>
+              <span class="price-original">MXN$4,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="porque" class="why-us">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="why-us-grid">
+        <div>
+          <p class="section-tag">Calidad Sin Compromisos</p>
+          <h2 class="font-cinzel section-title">Por qué <span class="gold-text">Barbas Bracelets</span> lidera la cultura</h2>
+          <div class="features">
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+              </div>
+              <div>
+                <h4 class="font-cinzel feature-title">Elementos de Lujo</h4>
+                <p class="feature-desc">Cada diseño cuenta con acabados premium en cromo, pedrería (rhinestones) y detalles en oro de 24K o de oro rosa.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+              </div>
+              <div>
+                <h4 class="font-cinzel feature-title">Artesanía de Impacto</h4>
+                <p class="feature-desc">Los detalles emblemáticos se elaboran con incrustaciones de alta densidad, grabados láser y aplicaciones metálicas de precisión.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-cinzel feature-title">Materiales Premium</h4>
+                <p class="feature-desc">Nuestros brazaletes utilizan acero inoxidable quirúrgico, cuero italiano genuino y piedras naturales seleccionadas para garantizar durabilidad.</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M2 12a10 10 0 0 1 18-6"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M9 6.8a6 6 0 0 1 9 5.2v2"/></svg>
+              </div>
+              <div>
+                <h4 class="font-cinzel feature-title">Autenticidad NFC</h4>
+                <p class="feature-desc">Protege tu inversión: cada brazalete oficial incluye una etiqueta NFC encriptada para verificación a través de nuestra aplicación oficial.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-us-image">
+          <img src="https://images.pexels.com/photos/33717668/pexels-photo-33717668.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Detalle de brazalete premium">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Testimonios</p>
+        <h2 class="font-cinzel section-title">Lo que dice <span class="gold-text">la Raza</span></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">"El Cuban Link 24K es una pieza de arte. La calidad del baño de oro es impresionante y el peso se siente premium. Barbas Bracelets está llevando la cultura a otro nivel."</p>
+          <p class="font-cinzel testimonial-author">Carlos M.</p>
+          <p class="testimonial-location">Guadalajara, MX</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">"Compré el set Leather & Gold para mí y uno para mi hermano. La presentación es increíble, con caja y certificado. Se nota que cada pieza está hecha con dedicación."</p>
+          <p class="font-cinzel testimonial-author">Diego R.</p>
+          <p class="testimonial-location">CDMX, MX</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">"El Gothic Cross Chrome es simplemente espectacular. Los cristales brillan de una manera que no esperaba. Mi novio lo usa todos los días y parece nuevo. 100% recomendado."</p>
+          <p class="font-cinzel testimonial-author">Ana L.</p>
+          <p class="testimonial-location">Monterrey, MX</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="section-line"></div>
+    <div class="container">
+      <div class="newsletter-content">
+        <p class="section-tag">Únete al Imperio</p>
+        <h2 class="font-cinzel section-title">No te pierdas un <span class="gold-text">Drop</span></h2>
+        <p class="section-desc">
+          Suscríbete para recibir acceso anticipado a lanzamientos exclusivos,
+          descuentos especiales y contenido VIP.
+        </p>
+        <form class="newsletter-form" onsubmit="handleSubscribe(event); return false;">
+          <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Tu correo electrónico" required>
+          <button type="submit" class="newsletter-btn gold-gradient">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+            Suscribirse
+          </button>
+        </form>
+        <p class="newsletter-disclaimer">Sin spam. Cancela cuando quieras. Respetamos tu privacidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#inicio" class="logo footer-logo">
+            <img src="{{ 'logo.png' | asset_url }}" alt="Barbas Bracelets" class="footer-logo-img">
+            <div class="logo-text">
+              <span class="font-cinzel footer-logo-text gold-text">BARBAS</span>
+              <span class="font-cinzel footer-logo-sub">Bracelets</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Streetwear Premium Jewelry. Donde la herencia mexicana se fusiona con el estilo urbano de lujo.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link"><span>IG</span></a>
+            <a href="#" class="footer-social-link"><span>FB</span></a>
+            <a href="#" class="footer-social-link"><span>TK</span></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-cinzel footer-title">Colecciones</h4>
+          <ul class="footer-links">
+            <li><a href="#tienda" class="footer-link">Cuban Links</a></li>
+            <li><a href="#tienda" class="footer-link">Crown Royale</a></li>
+            <li><a href="#tienda" class="footer-link">Gothic Cross</a></li>
+            <li><a href="#tienda" class="footer-link">Iced Out</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-cinzel footer-title">Soporte</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Preguntas Frecuentes</a></li>
+            <li><a href="#" class="footer-link">Envíos y Devoluciones</a></li>
+            <li><a href="#" class="footer-link">Guía de Tallas</a></li>
+            <li><a href="#" class="footer-link">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-cinzel footer-title">Contacto</h4>
+          <ul class="footer-contact">
+            <li>Email: soporte@barbasbracelets.com</li>
+            <li>WhatsApp: +52 1 55 1234 5678</li>
+            <li>Horario: Lun - Vie: 9:00 - 18:00</li>
+          </ul>
+          <div class="footer-payment">
+            <p class="footer-payment-title">Pagos Seguros</p>
+            <p class="footer-payment-methods">Visa, Mastercard, AMEX, PayPal, OXXO</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Barbas Bracelets. Todos los derechos reservados. Hecho en México.</p>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Términos de Servicio</a>
+          <a href="#" class="footer-legal-link">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/5215512345678?text=Hola!%20Me%20interesa%20obtener%20informaci%C3%B3n%20sobre%20los%20brazaletes%20premium." class="whatsapp-btn" target="_blank">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color: white;">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.638 1.966 14.167.94 11.54.94c-5.44 0-9.865 4.37-9.869 9.8-.001 1.724.453 3.41 1.32 4.893l-.994 3.629 3.73-.974zm12.013-6.024c-.3-.15-1.771-.875-2.046-.975-.276-.1-.477-.15-.677.15-.2.3-.777.975-.951 1.174-.174.2-.35.225-.65.075-.3-.15-1.263-.465-2.407-1.485-.89-.793-1.49-1.773-1.665-2.073-.174-.3-.019-.462.13-.611.135-.135.3-.35.45-.525.15-.174.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.631-.926-2.235-.244-.596-.492-.514-.677-.523-.174-.008-.375-.01-.576-.01-.2 0-.527.075-.802.375-.276.3-1.053 1.03-1.053 2.515s1.08 2.916 1.23 3.116c.15.2 2.126 3.245 5.15 4.553.719.311 1.28.497 1.718.637.721.229 1.378.196 1.898.118.579-.087 1.771-.725 2.021-1.425.25-.7.25-1.3.175-1.425-.075-.125-.275-.2-.575-.35z"/>
+    </svg>
+    <span class="whatsapp-badge">1</span>
+  </a>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Cart state
+    let cartItemsCount = 0;
+    const addedItems = {};
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+    }
+
+    function filterCategory(category, button) {
+      // Toggle tabs active class
+      document.querySelectorAll('.collection-tab').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      button.classList.add('active');
+
+      // Filter products
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function showToast(title, message, primaryBtnText, primaryBtnAction, secondaryBtnText, secondaryBtnAction) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast-card';
+      
+      let footerHtml = '';
+      if (primaryBtnText || secondaryBtnText) {
+        footerHtml = `<div class="toast-footer">`;
+        if (secondaryBtnText) {
+          footerHtml += `<button class="toast-btn toast-btn-secondary" onclick="this.closest('.toast-card').remove(); ${secondaryBtnAction || ''}">${secondaryBtnText}</button>`;
+        }
+        if (primaryBtnText) {
+          footerHtml += `<button class="toast-btn toast-btn-primary" onclick="this.closest('.toast-card').remove(); ${primaryBtnAction || ''}">${primaryBtnText}</button>`;
+        }
+        footerHtml += `</div>`;
+      }
+
+      toast.innerHTML = `
+        <div class="toast-header">
+          <span class="toast-title">${title}</span>
+          <span class="toast-close" onclick="this.closest('.toast-card').remove()">&times;</span>
+        </div>
+        <div class="toast-body">${message}</div>
+        ${footerHtml}
+      `;
+
+      container.appendChild(toast);
+      
+      // Force layout and show
+      setTimeout(() => {
+        toast.classList.add('show');
+      }, 50);
+
+      // Auto dismiss after 5 seconds if no button
+      if (!primaryBtnText && !secondaryBtnText) {
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => { toast.remove(); }, 400);
+        }, 5000);
+      }
+    }
+
+    function addToCart(productName, price, imgUrl) {
+      cartItemsCount += 1;
+      document.getElementById('cartBadge').textContent = cartItemsCount;
+      addedItems[productName] = (addedItems[productName] || 0) + 1;
+
+      // WhatsApp checkout text pre-fill
+      const waText = encodeURIComponent(`¡Hola Barbas Bracelets! Me interesa concretar la compra del brazalete ${productName} por MXN$${price.toLocaleString()}. Quedo a la espera de sus datos.`);
+      const waUrl = `https://wa.me/5215512345678?text=${waText}`;
+
+      showToast(
+        '¡Brazalete Agregado!',
+        `Has agregado <strong>${productName}</strong> al carrito de compra.`,
+        'Finalizar por WhatsApp',
+        `window.open('${waUrl}', '_blank')`,
+        'Seguir comprando',
+        ''
+      );
+    }
+
+    function openCartPreview() {
+      if (cartItemsCount === 0) {
+        showToast('Carrito Vacío', 'Explora nuestros brazaletes y añade tus favoritos para iniciar tu orden.', '', '', 'Entendido', '');
+        return;
+      }
+
+      let itemsList = '';
+      for (const [name, qty] of Object.entries(addedItems)) {
+        if (qty > 0) {
+          itemsList += `• ${name} (x${qty})<br>`;
+        }
+      }
+
+      const checkoutText = encodeURIComponent(`Hola Barbas Bracelets! Quisiera comprar los siguientes brazaletes:\n${Object.entries(addedItems).map(([name, qty]) => `${name} (x${qty})`).join('\n')}\n¿Me podrían guiar con el pago y envío?`);
+      const checkoutUrl = `https://wa.me/5215512345678?text=${checkoutText}`;
+
+      showToast(
+        'Resumen de Orden',
+        `<strong>Tus artículos:</strong><br>${itemsList}`,
+        'Finalizar Compra',
+        `window.open('${checkoutUrl}', '_blank')`,
+        'Vaciar Carrito',
+        'resetCart()'
+      );
+    }
+
+    function resetCart() {
+      cartItemsCount = 0;
+      document.getElementById('cartBadge').textContent = 0;
+      for (const key in addedItems) {
+        delete addedItems[key];
+      }
+      showToast('Carrito Vaciado', 'El carrito ha sido vaciado.', '', '', 'Cerrar', '');
+    }
+
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('newsletterEmail');
+      const email = emailInput.value;
+      if (email) {
+        showToast(
+          '¡Bienvenido al Imperio!',
+          `Te has suscrito con <strong>${email}</strong>. Te enviaremos accesos anticipados y promociones VIP de inmediato.`,
+          '', '', '¡Excelente!', ''
+        );
+        emailInput.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
