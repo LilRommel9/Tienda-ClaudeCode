@@ -1,0 +1,42 @@
+{% comment %}
+  Barbas Bracelets product listing section.
+  This renders products from the collection 'barbas-collection'.
+  Ensure you create a collection with that handle in Shopify admin and add the products.
+{% endcomment %}
+
+<section class="products-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag">Tienda Oficial</p>
+      <h2 class="font-cinzel section-title"><span class="gold-text">Brazaletes</span></h2>
+    </div>
+    <div class="products-grid">
+      {% for product in collections['barbas-collection'].products %}
+        <div class="product-card" data-category="{{ product.tags | join: ',' }}">
+          <div class="product-image">
+            <img src="{{ product.featured_image | img_url: '720x' }}" alt="{{ product.title }}">
+            {% if product.tags contains 'Mas Vendido' %}
+              <span class="product-tag gold-gradient">Más Vendido</span>
+            {% endif %}
+            {% if product.compare_at_price_max > product.price %}
+              <span class="product-discount">-{{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | round }}%</span>
+            {% endif %}
+            <button class="product-add-btn gold-gradient" data-variant-id="{{ product.variants.first.id }}" onclick="addToCart(this)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+          <div class="product-info">
+            <p class="product-collection">{{ product.type }}</p>
+            <h3 class="font-cinzel product-name">{{ product.title }}</h3>
+            <div class="product-price">
+              <span class="font-cinzel price-current gold-text">{{ product.price | money_without_currency }}</span>
+              {% if product.compare_at_price_max > product.price %}
+                <span class="price-original">{{ product.compare_at_price_max | money_without_currency }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
