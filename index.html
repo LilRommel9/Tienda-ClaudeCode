@@ -1,11 +1,10 @@
-{% layout none %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barbas Bracelets – Streetwear Premium Jewelry</title>
-  <meta name="description" content="Descubre los originales Barbas Bracelets — donde la herencia mexicana se fusiona con el estilo urbano de lujo. Brazaletes con acabados en oro de 24K y pedrería premium.">
+  <title>CrystalFlow – Luxury Bracelets</title>
+  <meta name="description" content="Descubre CrystalFlow — joyas de lujo hechas a mano en México. Brazaletes artesanales con piedras semipreciosas auténticas y diseños exclusivos.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,13 +12,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
     :root {
-      --gold: #C9A84C;
-      --gold-light: #E4CC6E;
-      --gold-dark: #9E7B2B;
+      --primary: #0A2463;
+      --primary-light: #1E3A8A;
+      --secondary: #D4AF37;
+      --secondary-light: #F4E6A5;
+      --accent: #E83E8C;
+      --accent-light: #FDB4D1;
       --dark: #0A0A0A;
       --dark-light: #141414;
       --dark-card: #1A1A1A;
       --dark-border: #2A2A2A;
+      --text-light: #F5F5F5;
+      --text-muted: #9CA3AF;
     }
     
     html { scroll-behavior: smooth; }
@@ -94,9 +98,12 @@
       color: rgba(255,255,255,0.7);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      transition: color 0.3s;
+      transition: all 0.3s;
     }
-    .nav-link:hover { color: var(--gold); }
+    .nav-link:hover { 
+      color: var(--secondary);
+      transform: translateY(-2px);
+    }
     
     .nav-actions { display: flex; align-items: center; gap: 1rem; }
     .cart-btn {
@@ -140,7 +147,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url("{{ 'hero-bg.jpg' | asset_url }}") center/cover no-repeat;
+      background: url('assets/hero-bg.jpg') center/cover no-repeat;
     }
     .hero-overlay {
       position: absolute;
@@ -172,6 +179,29 @@
       color: rgba(255,255,255,0.6);
       max-width: 600px;
       margin: 0 auto 2.5rem;
+    }
+    .hero-vip-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      color: var(--secondary-light);
+      backdrop-filter: blur(8px);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(212,175,55,0.3); }
+      50% { box-shadow: 0 0 20px rgba(212,175,55,0.6); }
+    }
+    .note-icon {
+      font-size: 1.25rem;
+      animation: float 2s ease-in-out infinite;
     }
     .hero-buttons {
       display: flex;
@@ -288,6 +318,9 @@
       gap: 4rem;
       align-items: center;
     }
+    @media (min-width: 1024px) {
+      .about-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     .about-image { position: relative; }
     .about-image img {
       width: 100%;
@@ -337,7 +370,7 @@
       height: 40px;
       background: var(--dark-border);
     }
-    .about-badge-value { font-size: 1.5rem; font-weight: 700; }
+    .about-badge-value { font-size: 1.5rem; font-weight: 700; color: var(--secondary); }
     .about-badge-label {
       font-size: 10px;
       color: rgba(255,255,255,0.4);
@@ -951,10 +984,10 @@
   <nav class="navbar">
     <div class="container navbar-inner">
       <a href="#inicio" class="logo">
-        <img src="{{ 'logo.png' | asset_url }}" alt="Barbas Bracelets" class="logo-img">
+        <img src="assets/logo.png" alt="CrystalFlow Bracelets" class="logo-img">
         <div class="logo-text">
-          <span class="font-cinzel logo-title gold-text">BARBAS</span>
-          <span class="font-cinzel logo-subtitle">Bracelets</span>
+          <span class="font-cinzel logo-title gold-text">CRYSTALFLOW</span>
+          <span class="font-cinzel logo-subtitle">BRACELETS</span>
         </div>
       </a>
       <div class="nav-links">
@@ -1013,16 +1046,19 @@
   <!-- FEATURED -->
   <section class="featured">
     <div class="container">
+      <h2 class="section-title font-cinzel">
+        <span class="gold-text">Colecciones Emblemáticas</span>
+      </h2>
       <div class="featured-grid">
         <div class="featured-card">
-          <img src="https://images.pexels.com/photos/32025019/pexels-photo-32025019.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Brazalete Cuban Link">
+          <img src="https://images.pexels.com/photos/32025019/pexels-photo-32025019.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Cuban Link Bracelet">
           <div class="featured-info">
-            <p class="featured-tag font-cinzel">Colección</p>
-            <p class="featured-name font-cinzel">Cuban Links 24K</p>
+            <p class="featured-tag font-cinzel">Colección Emblemática</p>
+            <p class="featured-name font-cinzel">Cuban Link 24K</p>
           </div>
         </div>
         <div class="featured-card">
-          <img src="https://images.pexels.com/photos/12915487/pexels-photo-12915487.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Brazalete Crown Beaded">
+          <img src="https://images.pexels.com/photos/12915487/pexels-photo-12915487.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Crown Beaded Bracelet">
           <div class="featured-info">
             <p class="featured-tag font-cinzel">Edición Limitada</p>
             <p class="featured-name font-cinzel">Crown Beaded</p>
@@ -1036,23 +1072,22 @@
   <section id="nosotros" class="about">
     <div class="section-line"></div>
     <div class="container">
-      <div class="about-grid">
-        <div class="about-image">
-          <img src="https://images.pexels.com/photos/8276126/pexels-photo-8276126.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Estilo urbano de lujo">
-          <div class="about-stat">
-            <p class="font-cinzel about-stat-number gold-text">+5K</p>
-            <p class="about-stat-text">Piezas vendidas en toda la República</p>
-          </div>
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://images.pexels.com/photos/33717668/pexels-photo-33717668.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Joyas artesanales mexicanas">
+        <div class="about-stat">
+          <p class="font-cinzel about-stat-number secondary">+5K</p>
+          <p class="about-stat-text">Joyas vendidas en México y U.S.A.</p>
         </div>
-        <div>
-          <p class="section-tag">La Leyenda de</p>
-          <h2 class="font-cinzel section-title">Barbas <span class="gold-text">Bracelets</span></h2>
-          <p class="about-text">
-            Fundada con pura garra y el esfuerzo del <em>"hustle"</em> en
-            las calles, esta marca se forjó desde abajo. De vender unas
-            cuantas pulseras en mercados locales a generar miles de ventas en
-            toda la República, <strong>Barbas Bracelets</strong> representa
-            la historia de éxito definitiva.
+      </div>
+      <div>
+        <p class="section-tag">CrystalFlow Collection</p>
+        <h2 class="font-cinzel section-title">Your Choice <span class="gold-text">Legend</span></h2>
+        <p class="about-text">
+            Fundada con pasión por crear joyas de historia mexicana, esta marca
+            se forjó con dedicación. De vender unas pocas piezas únicas en
+            mercados locales a generar miles de ventas en México, CrystalFlow
+            Jewelry representa la leyenda definitiva del lujo artesanal.
           </p>
           <p class="about-text">
             No solo vendemos brazaletes; entregamos una pieza de identidad
@@ -1092,22 +1127,22 @@
     <div class="container">
       <div class="section-header">
         <p class="section-tag">Colecciones Exclusivas</p>
-        <h2 class="font-cinzel section-title">Los Más Vendidos de <span class="gold-text">Barbas Bracelets</span></h2>
-        <p class="section-desc">
-          Explora las piezas más codiciadas de la cultura street-luxury. Cada
-          brazalete es un símbolo de identidad y éxito, fabricado con
-          materiales de la más alta calidad.
-        </p>
-      </div>
-      <div class="collection-tabs">
-        <button class="collection-tab active" onclick="filterCategory('all', this)">Todos</button>
-        <button class="collection-tab" onclick="filterCategory('Cuban Links', this)">Cuban Links</button>
-        <button class="collection-tab" onclick="filterCategory('Crown Royale', this)">Crown Royale</button>
-        <button class="collection-tab" onclick="filterCategory('Gothic Cross', this)">Gothic Cross</button>
-        <button class="collection-tab" onclick="filterCategory('Iced Out', this)">Iced Out</button>
-        <button class="collection-tab" onclick="filterCategory('Leather & Gold', this)">Leather & Gold</button>
-        <button class="collection-tab" onclick="filterCategory('Skull Empire', this)">Skull Empire</button>
-      </div>
+        <h2 class="font-cinzel section-title">Los Más Vendidos de <span class="gold-text">CrystalFlow</span></h2>
+          <p class="section-desc">
+            Explora las piezas más codiciadas del luxury jewelry. Cada
+            brazalete es un símbolo de estilo y éxito, fabricado con
+            piedras semipreciosas auténticas y acabados premium.
+          </p>
+        </div>
+        <div class="collection-tabs">
+          <button class="collection-tab active" onclick="filterCategory('all', this)">Todos</button>
+          <button class="collection-tab" onclick="filterCategory('Precious Stones', this)">Precious Stones</button>
+          <button class="collection-tab" onclick="filterCategory('Crystal Collection', this)">Crystal Collection</button>
+          <button class="collection-tab" onclick="filterCategory('Gold Edition', this)">Gold Edition</button>
+          <button class="collection-tab" onclick="filterCategory('Rose Gold', this)">Rose Gold</button>
+          <button class="collection-tab" onclick="filterCategory('Diamond Set', this)">Diamond Set</button>
+          <button class="collection-tab" onclick="filterCategory('Custom Artistry', this)">Custom Artistry</button>
+        </div>
       <div class="promo-banner gold-gradient">
         <div class="promo-content">
           <span class="font-cinzel promo-percent">30%</span>
@@ -1137,10 +1172,10 @@
         <!-- Product 1 -->
         <div class="product-card" data-category="Cuban Links">
           <div class="product-image">
-            <img src="{{ 'bracelet-1.jpg' | asset_url }}" alt="Cuban Link 24K Gold">
+            <img src="assets/bracelet-1.jpg" alt="Cuban Link 24K Gold">
             <span class="product-tag gold-gradient">Más Vendido</span>
             <span class="product-discount">-30%</span>
-            <button class="product-add-btn gold-gradient" onclick="addToCart('Cuban Link 24K Gold', 3150, '{{ \'bracelet-1.jpg\' | asset_url }}')">
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Cuban Link 24K Gold', 3150, 'assets/bracelet-1.jpg')">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </button>
           </div>
@@ -1166,10 +1201,10 @@
         <!-- Product 2 -->
         <div class="product-card" data-category="Crown Royale">
           <div class="product-image">
-            <img src="{{ 'bracelet-2.jpg' | asset_url }}" alt="Crown Beaded Obsidian">
+            <img src="assets/bracelet-2.jpg" alt="Crown Beaded Obsidian">
             <span class="product-tag gold-gradient">Edición Limitada</span>
             <span class="product-discount">-30%</span>
-            <button class="product-add-btn gold-gradient" onclick="addToCart('Crown Beaded Obsidian', 1960, '{{ \'bracelet-2.jpg\' | asset_url }}')">
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Crown Beaded Obsidian', 1960, 'assets/bracelet-2.jpg')">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </button>
           </div>
@@ -1195,10 +1230,10 @@
         <!-- Product 3 -->
         <div class="product-card" data-category="Gothic Cross">
           <div class="product-image">
-            <img src="{{ 'bracelet-3.jpg' | asset_url }}" alt="Gothic Cross Chrome">
+            <img src="assets/bracelet-3.jpg" alt="Gothic Cross Chrome">
             <span class="product-tag gold-gradient">Premium</span>
             <span class="product-discount">-30%</span>
-            <button class="product-add-btn gold-gradient" onclick="addToCart('Gothic Cross Chrome', 3640, '{{ \'bracelet-3.jpg\' | asset_url }}')">
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Gothic Cross Chrome', 3640, 'assets/bracelet-3.jpg')">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </button>
           </div>
@@ -1224,10 +1259,10 @@
         <!-- Product 4 -->
         <div class="product-card" data-category="Iced Out">
           <div class="product-image">
-            <img src="{{ 'bracelet-4.jpg' | asset_url }}" alt="Iced Out Rose Tennis">
+            <img src="assets/bracelet-4.jpg" alt="Iced Out Rose Tennis">
             <span class="product-tag gold-gradient">Exclusivo</span>
             <span class="product-discount">-30%</span>
-            <button class="product-add-btn gold-gradient" onclick="addToCart('Iced Out Rose Tennis', 4760, '{{ \'bracelet-4.jpg\' | asset_url }}')">
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Iced Out Rose Tennis', 4760, 'assets/bracelet-4.jpg')">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </button>
           </div>
@@ -1253,10 +1288,10 @@
         <!-- Product 5 -->
         <div class="product-card" data-category="Leather & Gold">
           <div class="product-image">
-            <img src="{{ 'bracelet-5.jpg' | asset_url }}" alt="Leather & Gold Duo Set">
+            <img src="assets/bracelet-5.jpg" alt="Leather & Gold Duo Set">
             <span class="product-tag gold-gradient">Set Completo</span>
             <span class="product-discount">-30%</span>
-            <button class="product-add-btn gold-gradient" onclick="addToCart('Leather & Gold Duo Set', 2520, '{{ \'bracelet-5.jpg\' | asset_url }}')">
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Leather & Gold Duo Set', 2520, 'assets/bracelet-5.jpg')">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </button>
           </div>
@@ -1282,10 +1317,10 @@
         <!-- Product 6 -->
         <div class="product-card" data-category="Skull Empire">
           <div class="product-image">
-            <img src="{{ 'bracelet-6.jpg' | asset_url }}" alt="Skull Empire Black">
+            <img src="assets/bracelet-6.jpg" alt="Skull Empire Black">
             <span class="product-tag gold-gradient">Dark Luxury</span>
             <span class="product-discount">-30%</span>
-            <button class="product-add-btn gold-gradient" onclick="addToCart('Skull Empire Black', 2800, '{{ \'bracelet-6.jpg\' | asset_url }}')">
+            <button class="product-add-btn gold-gradient" onclick="addToCart('Skull Empire Black', 2800, 'assets/bracelet-6.jpg')">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </button>
           </div>
@@ -1316,9 +1351,9 @@
     <div class="section-line"></div>
     <div class="container">
       <div class="why-us-grid">
-        <div>
-          <p class="section-tag">Calidad Sin Compromisos</p>
-          <h2 class="font-cinzel section-title">Por qué <span class="gold-text">CrystalFlow</span> lidera la cultura</h2>
+    <div>
+        <p class="section-tag">Calidad Sin Compromisos</p>
+        <h2 class="font-cinzel section-title">Por qué <span class="gold-text">CrystalFlow</span> lidera la cultura</h2>
           <div class="features">
             <div class="feature">
               <div class="feature-icon">
@@ -1335,7 +1370,7 @@
               </div>
               <div>
                 <h4 class="font-cinzel feature-title">Artesanía de Impacto</h4>
-                <p class="feature-desc">Los detalles emblemáticos se elaboran con incrustaciones de alta densidad, grabados láser y aplicaciones metálicas de precisión.</p>
+                <p class="feature-desc">Los detalles emblemáticos se elaboran con incrustaciones de alta densidad, grabados láser and aplicaciones metálicas de precisión.</p>
               </div>
             </div>
             <div class="feature">
@@ -1378,7 +1413,7 @@
           <div class="testimonial-stars">
             <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
           </div>
-          <p class="testimonial-text">"El Cuban Link 24K es una pieza de arte. La calidad del baño de oro es impresionante y el peso se siente premium. CrystalFlow Jewelry está llevando el lujo a otro nivel."</p>
+          <p class="testimonial-text">"El Cuban Link 24K es una pieza de arte. La calidad del baño de oro es impresionante y el peso se siente premium. Barbas Bracelets está llevando la cultura a otro nivel."</p>
           <p class="font-cinzel testimonial-author">Carlos M.</p>
           <p class="testimonial-location">Guadalajara, MX</p>
         </div>
@@ -1431,7 +1466,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#inicio" class="logo footer-logo">
-            <img src="{{ 'logo.png' | asset_url }}" alt="Barbas Bracelets" class="footer-logo-img">
+            <img src="assets/logo.png" alt="Barbas Bracelets" class="footer-logo-img">
             <div class="logo-text">
               <span class="font-cinzel footer-logo-text gold-text">BARBAS</span>
               <span class="font-cinzel footer-logo-sub">Bracelets</span>
