@@ -1,0 +1,117 @@
+<section class="featured-product section-padding" style="background-color: {{ section.settings.background_color }};">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center;">
+      
+      <!-- Product Image -->
+      <div class="product-media" style="position: relative;">
+        {%- assign product = all_products[section.settings.featured_product] -%}
+        {%- if product != empty and product.featured_image -%}
+          <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+        {%- else -%}
+          <div style="width: 100%; aspect-ratio: 4/5; background: #e0e0e0; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: #7a7a7a;">
+            Imagen del Producto (Placeholder)
+          </div>
+        {%- endif -%}
+        
+        {% if section.settings.show_badge %}
+          <span style="position: absolute; top: 1.5rem; left: 1.5rem; background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: var(--radius-pill); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">
+            {{ section.settings.badge_text }}
+          </span>
+        {% endif %}
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        {% if section.settings.eyebrow != blank %}
+          <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+        {% endif %}
+
+        <h2 style="font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 0.5rem;">
+          {%- if product != empty -%}
+            {{ product.title }}
+          {%- else -%}
+            Conjunto Loungewear 3 Piezas Terciopelo
+          {%- endif -%}
+        </h2>
+
+        <div class="price" style="font-size: 1.5rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          {%- if product != empty -%}
+            {{ product.price | money }}
+          {%- else -%}
+            $899.00 MXN
+          {%- endif -%}
+        </div>
+
+        <div class="description" style="color: var(--text-main); line-height: 1.7; margin-bottom: 2rem;">
+          {%- if product != empty -%}
+            {{ product.description | strip_html | truncatewords: 30 }}
+          {%- else -%}
+            Diseño único, elegante y hermoso. Material de terciopelo ultrasuave para un descanso perfecto. Disponible en variedad de colores, ideal para sentirte cómoda y con estilo en casa.
+          {%- endif -%}
+        </div>
+
+        <!-- Add to cart form (Mockup for Visual) -->
+        <form action="/cart/add" method="post" enctype="multipart/form-data">
+          {%- if product != empty -%}
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          {%- endif -%}
+          
+          <button type="submit" class="btn btn--primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: var(--radius-md);">
+            Agregar al Carrito
+          </button>
+        </form>
+
+        <!-- Features list -->
+        <ul style="margin-top: 2rem; list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Tela de terciopelo premium</li>
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Incluye 3 piezas (Top, short, suéter)</li>
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--primary); margin-right: 0.5rem;"></i> Envío gratis en compras mayores a ${{ settings.free_shipping_threshold }}</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Selecciona el Producto"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de Fondo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Texto Destacado (Arriba del Título)",
+      "default": "Más Vendido"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Mostrar Etiqueta en la Imagen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texto de Etiqueta",
+      "default": "HOT"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "overlay_opacity": 0.2,
+        "text_alignment": "center",
+        "text_color": "#333333",
+        "eyebrow": "Nueva Colección",
+        "title": "Sueños de Terciopelo",
+        "subtitle": "Tu pijama favorito para esos domingos de películas en casa.",
+        "button_label": "Ver Colección",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "product_benefits": {
+      "type": "product-benefits",
+      "settings": {
+        "bg_color": "#faf9f6",
+        "eyebrow": "Por qué amarlo",
+        "title": "Confort sin compromisos"
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "cloud",
+            "title": "Suavidad Extrema",
+            "text": "Terciopelo de alta calidad que no irrita la piel."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "Diseño Femenino",
+            "text": "Crop top y shorts ajustables que realzan tu figura."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "moon",
+            "title": "Dormir o Estar",
+            "text": "Perfecto tanto para dormir como para hacer maratón de series."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3"
+      ]
+    },
+    "featured_product": {
+      "type": "featured-product",
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "Más Vendido",
+        "show_badge": true,
+        "badge_text": "HOT"
+      }
+    },
+    "image_with_text": {
+      "type": "image-with-text",
+      "settings": {
+        "bg_color": "#eed6d3",
+        "layout": "right",
+        "eyebrow": "Estilo de Vida",
+        "title": "Relájate con Velvet Dreams",
+        "text": "<p>Nuestros conjuntos de 3 piezas están pensados para darte el máximo confort sin perder el estilo. Combina el suéter largo con otras prendas para salir de casa, o úsalo completo para tu noche de skincare.</p>",
+        "button_label": "Comprar Ahora",
+        "button_link": "shopify://collections/all"
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "product_benefits",
+    "featured_product",
+    "image_with_text"
+  ]
+}

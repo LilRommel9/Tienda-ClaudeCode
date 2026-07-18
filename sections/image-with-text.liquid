@@ -1,0 +1,108 @@
+<section class="image-with-text section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center; {% if section.settings.layout == 'right' %}direction: rtl;{% endif %}">
+      
+      <!-- Image Side -->
+      <div class="media-side" style="{% if section.settings.layout == 'right' %}direction: ltr;{% endif %} position: relative;">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.title }}" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+        {% else %}
+          <div style="width: 100%; aspect-ratio: 4/5; background: #e0e0e0; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: #7a7a7a;">
+            Imagen de Estilo de Vida
+          </div>
+        {% endif %}
+        
+        <!-- Decorative blob/shape behind image -->
+        <div style="position: absolute; top: -5%; left: -5%; width: 100%; height: 100%; background: var(--secondary); border-radius: var(--radius-lg); z-index: -1; opacity: 0.5;"></div>
+      </div>
+
+      <!-- Text Side -->
+      <div class="text-side" style="{% if section.settings.layout == 'right' %}direction: ltr;{% endif %}">
+        {% if section.settings.eyebrow != blank %}
+          <span class="section-eyebrow">{{ section.settings.eyebrow }}</span>
+        {% endif %}
+        
+        {% if section.settings.title != blank %}
+          <h2 style="font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 1.5rem;">{{ section.settings.title }}</h2>
+        {% endif %}
+        
+        {% if section.settings.text != blank %}
+          <div style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+        
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Imagen con Texto",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de Fondo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Alineación de Imagen",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "right", "label": "Derecha" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Texto Superior",
+      "default": "Estilo de Vida"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Relájate con Velvet Dreams"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Descripción",
+      "default": "<p>Nuestros conjuntos de 3 piezas están pensados para darte el máximo confort sin perder el estilo. Desde una tarde de café hasta tu rutina de noche.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Etiqueta del Botón",
+      "default": "Descubrir Más"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del Botón"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Imagen con Texto",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -8,10 +8,10 @@
 
   {% include 'meta.liquid' %}
 
-  <!-- Google Fonts: Outfit (headings) + Inter (body) -->
+  <!-- Google Fonts: Playfair Display (headings) + Jost (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,13 +22,13 @@
   {{ content_for_header }}
 </head>
 <body>
-  {% include 'header' %}
+  {% section 'header' %}
 
   <main>
     {{ content_for_layout }}
   </main>
 
-  {% include 'footer' %}
+  {% section 'footer' %}
 
   <script src="{{ 'theme.js' | asset_url }}"></script>
 </body>

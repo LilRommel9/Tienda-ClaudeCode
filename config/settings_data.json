@@ -1,27 +1,22 @@
 {
   "current": {
-    "brand_name": "LostGenClub",
-    "brand_tagline": "Premium Jewelry That Lasts",
-    "brand_description": "Joyería premium diseñada con los mejores materiales. Acero inoxidable 316L y baño de oro PVD 18K.",
+    "brand_name": "Velvet Dreams",
+    "brand_tagline": "Comodidad y estilo en casa",
+    "brand_description": "Conjuntos loungewear de terciopelo suave. Combina estilo y máximo confort para tus días de descanso.",
+    "color_background": "#faf9f6",
+    "color_primary": "#e8b4b8",
+    "color_secondary": "#eed6d3",
+    "color_text_main": "#333333",
+    "color_text_muted": "#7a7a7a",
     "whatsapp_number": "5215512345678",
-    "email": "info@lostgenclub.com",
-    "phone": "+52 1 55 1234 5678",
-    "instagram_url": "https://instagram.com/lostgenclub",
-    "facebook_url": "https://facebook.com/lostgenclub",
-    "twitter_url": "https://twitter.com/lostgenclub",
-    "free_shipping_threshold": 1800,
-    "shipping_days": "4-9",
-    "warranty_message": "Garantía de Por Vida",
-    "material_note": "Acero Inoxidable 316L & Oro PVD 18K",
-    "hero_title": "Timeless Men Jewelry",
-    "hero_subtitle": "Joyería premium diseñada con los mejores materiales.",
-    "hero_cta_text": "Ver Colección",
-    "hero_cta_url": "/collections/all"
+    "email": "hello@velvetdreams.com",
+    "free_shipping_threshold": 899,
+    "material_note": "Terciopelo premium ultrasuave"
   },
   "presets": {
-    "LostGenClub Default": {
-      "brand_name": "LostGenClub",
-      "brand_tagline": "Premium Jewelry That Lasts"
+    "Velvet Dreams Default": {
+      "brand_name": "Velvet Dreams",
+      "color_background": "#faf9f6"
     }
   }
 }

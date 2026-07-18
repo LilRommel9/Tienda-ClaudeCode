@@ -1,6 +1,6 @@
 [
   {
-    "name": "LostGenClub Theme Settings",
+    "name": "Velvet Dreams Theme Settings",
     "settings": [
       {
         "type": "header",
@@ -10,24 +10,58 @@
         "type": "text",
         "id": "brand_name",
         "label": "Brand Name",
-        "default": "LostGenClub"
+        "default": "Velvet Dreams"
       },
       {
         "type": "text",
         "id": "brand_tagline",
         "label": "Brand Tagline",
-        "default": "Premium Jewelry That Lasts"
+        "default": "Comodidad y estilo en casa"
       },
       {
         "type": "textarea",
         "id": "brand_description",
         "label": "Brand Description",
-        "default": "Joyería premium diseñada con los mejores materiales. Acero inoxidable 316L y baño de oro PVD 18K."
+        "default": "Loungewear de terciopelo suave y cómodo para tus días de descanso."
       },
       {
         "type": "image_picker",
         "id": "logo",
         "label": "Logo"
+      },
+      {
+        "type": "header",
+        "content": "Colors (Estilo Loungewear)"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Fondo Principal",
+        "default": "#faf9f6"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Color Primario (Acentos/Botones)",
+        "default": "#e8b4b8"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Color Secundario (Fondos alternos)",
+        "default": "#eed6d3"
+      },
+      {
+        "type": "color",
+        "id": "color_text_main",
+        "label": "Texto Principal",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Texto Secundario",
+        "default": "#7a7a7a"
       },
       {
         "type": "header",
@@ -43,91 +77,26 @@
         "type": "text",
         "id": "email",
         "label": "Contact Email",
-        "default": "info@lostgenclub.com"
-      },
-      {
-        "type": "text",
-        "id": "phone",
-        "label": "Phone Number",
-        "default": "+52 1 55 1234 5678"
+        "default": "hello@velvetdreams.com"
       },
       {
         "type": "header",
-        "content": "Social Media"
-      },
-      {
-        "type": "url",
-        "id": "instagram_url",
-        "label": "Instagram URL"
-      },
-      {
-        "type": "url",
-        "id": "facebook_url",
-        "label": "Facebook URL"
-      },
-      {
-        "type": "url",
-        "id": "twitter_url",
-        "label": "Twitter URL"
-      },
-      {
-        "type": "header",
-        "content": "Shipping & Warranty"
+        "content": "Shipping & Benefits"
       },
       {
         "type": "range",
         "id": "free_shipping_threshold",
-        "label": "Free Shipping Threshold (MXN)",
+        "label": "Envío Gratis desde (MXN)",
         "min": 0,
-        "max": 5000,
-        "step": 100,
-        "default": 1800
-      },
-      {
-        "type": "text",
-        "id": "shipping_days",
-        "label": "Shipping Days",
-        "default": "4-9"
-      },
-      {
-        "type": "text",
-        "id": "warranty_message",
-        "label": "Warranty Message",
-        "default": "Garantía de Por Vida"
+        "max": 2000,
+        "step": 50,
+        "default": 899
       },
       {
         "type": "text",
         "id": "material_note",
-        "label": "Material Note",
-        "default": "Acero Inoxidable 316L & Oro PVD 18K"
-      },
-      {
-        "type": "header",
-        "content": "Hero Section"
-      },
-      {
-        "type": "text",
-        "id": "hero_title",
-        "label": "Hero Title",
-        "default": "Timeless Men Jewelry"
-      },
-      {
-        "type": "textarea",
-        "id": "hero_subtitle",
-        "label": "Hero Subtitle",
-        "default": "Joyería premium diseñada con los mejores materiales."
-      },
-      {
-        "type": "text",
-        "id": "hero_cta_text",
-        "label": "Hero CTA Text",
-        "default": "Ver Colección"
-      },
-      {
-        "type": "url",
-        "id": "hero_cta_url",
-        "label": "Hero CTA URL",
-        "default": "/collections/all"
+        "label": "Nota de Material",
+        "default": "Terciopelo premium ultrasuave"
       }
     ]
   }
