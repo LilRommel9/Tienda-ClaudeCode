@@ -1,10 +1,8 @@
 {
   "current": {
     "brand_name": "LostGenClub",
-    "brand_tagline": "Jewelry That Lasts",
-    "primary_color": "#d4af37",
-    "secondary_color": "#1a1a1a",
-    "accent_color": "#ffffff",
+    "brand_tagline": "Premium Jewelry That Lasts",
+    "brand_description": "Joyería premium diseñada con los mejores materiales. Acero inoxidable 316L y baño de oro PVD 18K.",
     "whatsapp_number": "5215512345678",
     "email": "info@lostgenclub.com",
     "phone": "+52 1 55 1234 5678",
@@ -13,20 +11,17 @@
     "twitter_url": "https://twitter.com/lostgenclub",
     "free_shipping_threshold": 1800,
     "shipping_days": "4-9",
-    "warranty_message": "Lifetime Warranty",
-    "material_note": "316L Stainless Steel & 18K Gold PVD",
+    "warranty_message": "Garantía de Por Vida",
+    "material_note": "Acero Inoxidable 316L & Oro PVD 18K",
     "hero_title": "Timeless Men Jewelry",
-    "hero_subtitle": "Discover Mexico's Premier Luxury Bracelet Destination",
-    "hero_cta_text": "Explore Collection",
+    "hero_subtitle": "Joyería premium diseñada con los mejores materiales.",
+    "hero_cta_text": "Ver Colección",
     "hero_cta_url": "/collections/all"
   },
   "presets": {
     "LostGenClub Default": {
       "brand_name": "LostGenClub",
-      "brand_tagline": "Jewelry That Lasts",
-      "primary_color": "#d4af37",
-      "secondary_color": "#1a1a1a",
-      "accent_color": "#ffffff"
+      "brand_tagline": "Premium Jewelry That Lasts"
     }
   }
 }

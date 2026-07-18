@@ -16,30 +16,18 @@
         "type": "text",
         "id": "brand_tagline",
         "label": "Brand Tagline",
-        "default": "Jewelry That Lasts"
+        "default": "Premium Jewelry That Lasts"
+      },
+      {
+        "type": "textarea",
+        "id": "brand_description",
+        "label": "Brand Description",
+        "default": "Joyería premium diseñada con los mejores materiales. Acero inoxidable 316L y baño de oro PVD 18K."
       },
       {
         "type": "image_picker",
         "id": "logo",
         "label": "Logo"
-      },
-      {
-        "type": "color",
-        "id": "primary_color",
-        "label": "Primary Color",
-        "default": "#d4af37"
-      },
-      {
-        "type": "color",
-        "id": "secondary_color",
-        "label": "Secondary Color",
-        "default": "#1a1a1a"
-      },
-      {
-        "type": "color",
-        "id": "accent_color",
-        "label": "Accent Color",
-        "default": "#ffffff"
       },
       {
         "type": "header",
@@ -105,13 +93,13 @@
         "type": "text",
         "id": "warranty_message",
         "label": "Warranty Message",
-        "default": "Lifetime Warranty"
+        "default": "Garantía de Por Vida"
       },
       {
         "type": "text",
         "id": "material_note",
         "label": "Material Note",
-        "default": "316L Stainless Steel & 18K Gold PVD"
+        "default": "Acero Inoxidable 316L & Oro PVD 18K"
       },
       {
         "type": "header",
@@ -127,13 +115,13 @@
         "type": "textarea",
         "id": "hero_subtitle",
         "label": "Hero Subtitle",
-        "default": "Discover Mexico's Premier Luxury Bracelet Destination"
+        "default": "Joyería premium diseñada con los mejores materiales."
       },
       {
         "type": "text",
         "id": "hero_cta_text",
         "label": "Hero CTA Text",
-        "default": "Explore Collection"
+        "default": "Ver Colección"
       },
       {
         "type": "url",

@@ -2,259 +2,427 @@
   ========================================
   LOSTGENCLUB - HOME PAGE
   ========================================
-  Esta es la página principal de tu tienda.
-
-  Secciones incluidas:
-  1. Hero (banner principal)
-  2. Productos destacados
-  3. Colecciones
-  4. Por qué elegirnos
-  5. Testimonios
-  6. Newsletter/CTA
+  Diseño inspirado en Evie Ring.
+  Secciones:
+  1. Hero (gradiente púrpura)
+  2. Press Quote
+  3. Product Feature
+  4. Award-Winning (fondo oscuro)
+  5. App/Lifestyle Showcase
+  6. Features Grid
+  7. Goals/Benefits Cards
+  8. Gallery "Designed For"
+  9. Newsletter
   ========================================
 {%- endcomment -%}
 
-{%- comment -%} HERO SECTION {%- endcomment -%}
-<section class="hero">
-  <div class="container">
-    <div class="text-center text-white text-sm-start" style="max-width: 900px; margin: 0 auto;">
-      <p class="text-warning mb-4" style="text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; font-size: 0.8rem;">
-        {{ settings.brand_tagline }}
+
+{%- comment -%} ====== SECTION 1: HERO ====== {%- endcomment -%}
+<section class="hero-section" id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow__dot"></span>
+      {{ settings.brand_tagline }}
+    </div>
+
+    <h1 class="hero-title">
+      Presentamos<br>
+      <span>{{ settings.brand_name }}</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Joyería premium diseñada con los mejores materiales. {{ settings.material_note }}. Diseño que perdura.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="{{ settings.hero_cta_url | default: '/collections/all' }}" class="btn btn--primary btn--lg">
+        {{ settings.hero_cta_text | default: 'Ver Colección' }}
+        <i class="fas fa-arrow-right" style="font-size: 0.8em;"></i>
+      </a>
+      <a href="/pages/about" class="btn btn--outline-light btn--lg">
+        Conoce Más
+      </a>
+    </div>
+
+    {%- comment -%} Hero product images {%- endcomment -%}
+    <div class="hero-image-wrapper">
+      <img
+        src="{{ 'bracelet-1.jpg' | asset_url }}"
+        alt="{{ settings.brand_name }} - Producto Destacado"
+        loading="eager"
+        width="500"
+        height="500"
+        style="border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,0.4);"
+      >
+    </div>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <div class="hero-scroll-indicator__line"></div>
+    <span class="hero-scroll-indicator__text">Scroll</span>
+  </div>
+</section>
+
+
+{%- comment -%} ====== SECTION 2: PRESS QUOTE ====== {%- endcomment -%}
+<section class="press-quote-section animate-on-scroll" id="press-quote">
+  <div class="container container--narrow">
+    <div class="press-quote">
+      <p class="press-quote__text">
+        "{{ settings.brand_name }} es una de las mejores marcas de joyería masculina que hemos visto. La calidad del acero inoxidable 316L es impresionante."
       </p>
-      <h1 class="display-1 fw-bold mb-4 text-white" style="font-family: 'Cinzel', serif; font-size: 3.5rem; font-weight: 900; line-height: 1.1;">
-        <span class="text-warning">{{ settings.brand_name }}</span>
-      </h1>
-      <p class="lead mb-5" style="font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto;">
-        {{ settings.brand_description }}
+      <div class="press-quote__source">
+        <span style="font-weight: 700; color: var(--dark-text);">GQ México</span>
+        <span class="press-quote__divider"></span>
+        <span>Estilo & Tendencias</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{%- comment -%} ====== SECTION 3: PRODUCT FEATURE ====== {%- endcomment -%}
+<section class="product-feature-section" id="product-feature">
+  <div class="container">
+    <div class="product-feature">
+      <div class="product-feature__media animate-on-scroll">
+        <img
+          src="{{ 'bracelet-2.jpg' | asset_url }}"
+          alt="{{ settings.brand_name }} - Producto Principal"
+          class="product-feature__image"
+          loading="lazy"
+          width="560"
+          height="560"
+        >
+        <span class="product-feature__badge">Nuevo</span>
+      </div>
+      <div class="product-feature__content animate-on-scroll animate-on-scroll--delay-2">
+        <span class="section-eyebrow">Producto Estrella</span>
+        <h2 class="product-feature__title">Colección Premium</h2>
+        <p class="product-feature__text">
+          Cada pieza está diseñada con precisión artesanal y los materiales más finos. Nuestras pulseras combinan durabilidad con un estilo que no pasa de moda.
+        </p>
+        <ul class="product-feature__list">
+          <li class="product-feature__list-item">
+            <span class="product-feature__list-icon"><i class="fas fa-check" style="font-size: 0.5rem;"></i></span>
+            {{ settings.material_note }}
+          </li>
+          <li class="product-feature__list-item">
+            <span class="product-feature__list-icon"><i class="fas fa-check" style="font-size: 0.5rem;"></i></span>
+            Resistente al agua y al sudor
+          </li>
+          <li class="product-feature__list-item">
+            <span class="product-feature__list-icon"><i class="fas fa-check" style="font-size: 0.5rem;"></i></span>
+            {{ settings.warranty_message }}
+          </li>
+          <li class="product-feature__list-item">
+            <span class="product-feature__list-icon"><i class="fas fa-check" style="font-size: 0.5rem;"></i></span>
+            Envío gratis en compras mayores a ${{ settings.free_shipping_threshold }} MXN
+          </li>
+        </ul>
+        <div class="btn-group" style="margin-top: 0.5rem;">
+          <a href="/collections/all" class="btn btn--primary">Comprar Ahora</a>
+          <a href="/pages/about" class="btn btn--outline">Más Detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{%- comment -%} ====== SECTION 4: AWARD / SHOWCASE DARK ====== {%- endcomment -%}
+<section class="award-section" id="award-section">
+  <div class="container">
+    <div class="award-section__header animate-on-scroll">
+      <span class="section-eyebrow section-eyebrow--light">Nuestra Colección</span>
+      <h2 class="award-section__title">Diseño Premiado,<br>Calidad Abierta</h2>
+      <p class="award-section__subtitle">
+        Cada pieza es una declaración de estilo. Descubre nuestra colección más aclamada.
       </p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4" style="gap: 1rem;">
-        <a href="/collections/all" class="btn btn-primary px-4" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
-          Ver Colecciones
-        </a>
-        <a href="/pages/about" class="btn btn-outline-light px-4" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
-          Conócenos
-        </a>
+    </div>
+    <div class="award-grid">
+      <div class="award-card animate-on-scroll animate-on-scroll--delay-1">
+        <div class="award-card__image">
+          <img
+            src="{{ 'bracelet-3.jpg' | asset_url }}"
+            alt="Brazalete Premium 1"
+            loading="lazy"
+            width="400"
+            height="400"
+          >
+        </div>
+        <h4 class="award-card__title">Edición Signature</h4>
+        <p class="award-card__text">Acero inoxidable 316L premium</p>
       </div>
-      <div class="scroll-indicator animate-float" style="margin-top: 3rem;">
-        <div class="scroll-line"></div>
-        <p class="scroll-text text-warning mb-0">Scroll</p>
+      <div class="award-card animate-on-scroll animate-on-scroll--delay-2">
+        <div class="award-card__image">
+          <img
+            src="{{ 'bracelet-4.jpg' | asset_url }}"
+            alt="Brazalete Premium 2"
+            loading="lazy"
+            width="400"
+            height="400"
+          >
+        </div>
+        <h4 class="award-card__title">Edición Gold</h4>
+        <p class="award-card__text">Baño de oro PVD 18K</p>
+      </div>
+      <div class="award-card animate-on-scroll animate-on-scroll--delay-3">
+        <div class="award-card__image">
+          <img
+            src="{{ 'bracelet-5.jpg' | asset_url }}"
+            alt="Brazalete Premium 3"
+            loading="lazy"
+            width="400"
+            height="400"
+          >
+        </div>
+        <h4 class="award-card__title">Edición Black</h4>
+        <p class="award-card__text">Acabado mate exclusivo</p>
       </div>
     </div>
   </div>
 </section>
 
-{%- comment -%} FEATURED PRODUCTS SECTION {%- endcomment -%}
-<section class="featured py-5">
+
+{%- comment -%} ====== SECTION 5: APP / LIFESTYLE SHOWCASE ====== {%- endcomment -%}
+<section class="app-showcase-section" id="lifestyle">
   <div class="container">
-    <div class="text-center mb-5">
-      <span class="section-tag">{{ settings.brand_name }}</span>
-      <h2 class="font-cinzel mb-3">Productos Destacados</h2>
-      <p class="text-white">Las piezas más populares de nuestra colección exclusiva</p>
-    </div>
-    <div class="row g-4">
-      {%- assign featured_products = collection.products | where: "featured", true -%}
-      {%- for product in featured_products limit:6 -%}
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card h-100">
-          <div class="product-image">
-            {%- if product.featured_image -%}
-            <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" loading="lazy">
-            {%- else -%}
-            <img src="https://imgur.com/a/Q2IoVkM" alt="Imagen por defecto" loading="lazy">
-            {%- endif -%}
-            {%- if product.compare_at_price > product.price -%}
-            <span class="product-badge discount-badge">
-              -{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%
-            </span>
-            {%- endif -%}
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">{{ product.title }}</h3>
-            <div class="product-price">
-              <span class="price-current">{{ product.price | money }}</span>
-              {%- if product.compare_at_price > product.price -%}
-              <span class="product-price-old">{{ product.compare_at_price | money }}</span>
-              {%- endif -%}
-            </div>
-            <div class="product-rating">
-              {%- assign rating = product.metafields.reviews.rating.value | default: 5 -%}
-              {%- for i in (1..5) -%}
-                {%- if i <= rating -%}★{%- else -%}☆{%- endif -%}
-              {%- endfor -%}
-            </div>
-            <button class="btn-add-to-cart" onclick="addToCart('{{ product.title }}', {{ product.price | money_without_currency }}, '{{ product.featured_image | img_url: 'small' }}')">
-              Agregar al Carrito
-            </button>
-          </div>
+    <div class="app-showcase">
+      <div class="app-showcase__content animate-on-scroll">
+        <span class="section-eyebrow">Estilo de Vida</span>
+        <h2 class="app-showcase__title">El Futuro del Estilo Masculino</h2>
+        <p class="app-showcase__text">
+          Nuestras piezas están diseñadas para acompañarte en cada momento.
+          Desde reuniones de negocios hasta aventuras al aire libre, cada brazalete
+          se adapta a tu estilo de vida sin comprometer calidad ni elegancia.
+        </p>
+        <div class="btn-group">
+          <a href="/collections/all" class="btn btn--primary">Explorar Colección</a>
         </div>
       </div>
-      {%- endfor -%}
-    </div>
-    <div class="text-center mt-5">
-      <a href="/collections/all" class="btn btn-outline-light btn-lg">Ver Todos los Productos</a>
+      <div class="app-showcase__media animate-on-scroll animate-on-scroll--delay-2">
+        <img
+          src="{{ 'bracelet-6.jpg' | asset_url }}"
+          alt="Estilo de vida {{ settings.brand_name }}"
+          style="border-radius: 20px; box-shadow: 0 16px 48px rgba(26, 10, 46, 0.15); max-width: 450px;"
+          loading="lazy"
+          width="450"
+          height="500"
+        >
+      </div>
     </div>
   </div>
 </section>
 
-{%- comment -%} COLLECTIONS SECTION {%- endcomment -%}
-<section class="collections py-5" style="background: linear-gradient(135deg, rgba({{ settings.secondary_color }},0.3) 0%, {{ settings.secondary_color }} 100%);">
+
+{%- comment -%} ====== SECTION 6: FEATURES GRID ====== {%- endcomment -%}
+<section class="features-section" id="features">
   <div class="container">
-    <div class="text-center mb-5">
-      <span class="section-tag">Nuestras Colecciones</span>
-      <h2 class="font-cinzel mb-3">Explora por Categoría</h2>
-      <p class="text-white">Encuentra el estilo perfecto para ti</p>
+    <div class="features-section__header animate-on-scroll">
+      <span class="section-eyebrow">¿Por Qué Elegirnos?</span>
+      <h2>La Diferencia {{ settings.brand_name }}</h2>
+      <p class="section-description">
+        Calidad, diseño y compromiso en cada pieza que creamos.
+      </p>
     </div>
-    <div class="row g-4">
-      {%- assign collection_list = collections -%}
-      {%- for collection in collection_list limit:6 -%}
-      <div class="col-md-6 col-lg-4">
-        <a href="{{ collection.url }}" class="text-decoration-none">
-          <div class="collection-card h-100 text-center">
-            <div class="collection-image mb-3">
-              {%- if collection.image -%}
-              <img src="{{ collection.image | img_url: '400x400' }}" alt="{{ collection.title }}" class="img-fluid rounded" style="height: 200px; object-fit: cover; width: 100%;">
-              {%- else -%}
-              <img src="https://imgur.com/a/Q2IoVkM" alt="Default" class="img-fluid rounded" style="height: 200px; object-fit: cover; width: 100%;">
-              {%- endif -%}
-            </div>
-            <h4 class="collection-title font-cinzel">{{ collection.title }}</h4>
-            <p class="text-white small">{{ collection.products_count }} productos</p>
-          </div>
-        </a>
+    <div class="features-grid">
+      <div class="feature-card animate-on-scroll animate-on-scroll--delay-1">
+        <div class="feature-card__icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h4 class="feature-card__title">{{ settings.warranty_message }}</h4>
+        <p class="feature-card__text">
+          Todas nuestras piezas de acero inoxidable 316L vienen con garantía de por vida. Tu inversión está protegida.
+        </p>
       </div>
-      {%- endfor -%}
+      <div class="feature-card animate-on-scroll animate-on-scroll--delay-2">
+        <div class="feature-card__icon">
+          <i class="fas fa-tint-slash"></i>
+        </div>
+        <h4 class="feature-card__title">Waterproof</h4>
+        <p class="feature-card__text">
+          Resistente al agua, sudor y actividades deportivas. Diseñado para el uso diario sin preocupaciones.
+        </p>
+      </div>
+      <div class="feature-card animate-on-scroll animate-on-scroll--delay-3">
+        <div class="feature-card__icon">
+          <i class="fas fa-gem"></i>
+        </div>
+        <h4 class="feature-card__title">Materiales Premium</h4>
+        <p class="feature-card__text">
+          {{ settings.material_note }}. Solo los mejores materiales para piezas que duran toda la vida.
+        </p>
+      </div>
+      <div class="feature-card animate-on-scroll animate-on-scroll--delay-1">
+        <div class="feature-card__icon">
+          <i class="fas fa-truck-fast"></i>
+        </div>
+        <h4 class="feature-card__title">Envío Express</h4>
+        <p class="feature-card__text">
+          Envío gratis en compras mayores a ${{ settings.free_shipping_threshold }} MXN. Entrega en {{ settings.shipping_days }} días hábiles.
+        </p>
+      </div>
+      <div class="feature-card animate-on-scroll animate-on-scroll--delay-2">
+        <div class="feature-card__icon">
+          <i class="fas fa-arrows-rotate"></i>
+        </div>
+        <h4 class="feature-card__title">Devolución Fácil</h4>
+        <p class="feature-card__text">
+          30 días para devoluciones sin complicaciones. Tu satisfacción es nuestra prioridad.
+        </p>
+      </div>
+      <div class="feature-card animate-on-scroll animate-on-scroll--delay-3">
+        <div class="feature-card__icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <h4 class="feature-card__title">Certificado de Autenticidad</h4>
+        <p class="feature-card__text">
+          Cada pieza incluye un certificado que garantiza la autenticidad de los materiales utilizados.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-{%- comment -%} FEATURES SECTION {%- endcomment -%}
-<section class="features py-5">
+
+{%- comment -%} ====== SECTION 7: GOALS / BENEFITS ====== {%- endcomment -%}
+<section class="goals-section" id="benefits">
   <div class="container">
-    <div class="text-center mb-5">
-      <span class="section-tag">Por qué elegirnos</span>
-      <h2 class="font-cinzel mb-3">La Diferencia {{ settings.brand_name }}</h2>
+    <div class="goals-section__header animate-on-scroll">
+      <span class="section-eyebrow">Para Cada Ocasión</span>
+      <h2>Elige Tu Estilo,<br>Define Tu Personalidad</h2>
+      <p class="section-description">
+        Nuestra colección se adapta a cada aspecto de tu vida. Encuentra la pieza perfecta para cada momento.
+      </p>
     </div>
-    <div class="row g-4">
-      <div class="col-md-3">
-        <div class="feature text-center">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h5 class="font-cinzel">{{ settings.warranty_message }}</h5>
-          <p class="text-white small">Garantía de por vida en todas nuestras piezas de acero inoxidable</p>
-        </div>
+    <div class="goals-grid">
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-1">
+        <div class="goal-card__emoji">💼</div>
+        <h4 class="goal-card__title">Negocios</h4>
+        <p class="goal-card__text">Elegancia profesional para el día a día</p>
       </div>
-      <div class="col-md-3">
-        <div class="feature text-center">
-          <div class="feature-icon">
-            <i class="fas fa-tint"></i>
-          </div>
-          <h5 class="font-cinzel">Waterproof</h5>
-          <p class="text-white small">Resistente al agua y al sudor, perfecto para el uso diario</p>
-        </div>
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-2">
+        <div class="goal-card__emoji">🏋️</div>
+        <h4 class="goal-card__title">Deporte</h4>
+        <p class="goal-card__text">Resistente a tus actividades más intensas</p>
       </div>
-      <div class="col-md-3">
-        <div class="feature text-center">
-          <div class="feature-icon">
-            <i class="fas fa-gem"></i>
-          </div>
-          <h5 class="font-cinzel">Materiales Premium</h5>
-          <p class="text-white small">{{ settings.material_note }}</p>
-        </div>
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-3">
+        <div class="goal-card__emoji">🌊</div>
+        <h4 class="goal-card__title">Aventura</h4>
+        <p class="goal-card__text">Waterproof para viajes y naturaleza</p>
       </div>
-      <div class="col-md-3">
-        <div class="feature text-center">
-          <div class="feature-icon">
-            <i class="fas fa-shipping-fast"></i>
-          </div>
-          <h5 class="font-cinzel">Envío Gratis</h5>
-          <p class="text-white small">En compras mayores a ${{ settings.free_shipping_threshold }} MXN</p>
-        </div>
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-4">
+        <div class="goal-card__emoji">🎉</div>
+        <h4 class="goal-card__title">Eventos</h4>
+        <p class="goal-card__text">Brilla en cada ocasión especial</p>
+      </div>
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-1">
+        <div class="goal-card__emoji">🎁</div>
+        <h4 class="goal-card__title">Regalos</h4>
+        <p class="goal-card__text">El detalle perfecto para alguien especial</p>
+      </div>
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-2">
+        <div class="goal-card__emoji">✨</div>
+        <h4 class="goal-card__title">Casual</h4>
+        <p class="goal-card__text">Estilo relajado con un toque de lujo</p>
+      </div>
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-3">
+        <div class="goal-card__emoji">🖤</div>
+        <h4 class="goal-card__title">Minimalista</h4>
+        <p class="goal-card__text">Diseño limpio y sofisticado</p>
+      </div>
+      <div class="goal-card animate-on-scroll animate-on-scroll--delay-4">
+        <div class="goal-card__emoji">👑</div>
+        <h4 class="goal-card__title">Coleccionista</h4>
+        <p class="goal-card__text">Ediciones limitadas para los más exigentes</p>
       </div>
     </div>
   </div>
 </section>
 
-{%- comment -%} TESTIMONIALS SECTION {%- endcomment -%}
-<section class="testimonials py-5" style="background: linear-gradient(135deg, rgba({{ settings.secondary_color }},0.3) 0%, {{ settings.secondary_color }} 100%);">
+
+{%- comment -%} ====== SECTION 8: DESIGNED FOR / GALLERY ====== {%- endcomment -%}
+<section class="designed-section" id="gallery">
   <div class="container">
-    <div class="text-center mb-5">
-      <span class="section-tag">Lo que dicen</span>
-      <h2 class="font-cinzel mb-3">Testimonios Reales</h2>
+    <div style="text-align: center; margin-bottom: 4rem;" class="animate-on-scroll">
+      <span class="section-eyebrow">Galería</span>
+      <h2>Diseñado Para Ti</h2>
+      <p class="section-description">
+        Cada pieza cuenta una historia. Encuentra la tuya.
+      </p>
     </div>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="testimonial-card h-100">
-          <div class="testimonial-stars mb-3">
-            {%- for i in (1..5) -%}
-            <span class="star text-warning">★</span>
-            {%- endfor -%}
-          </div>
-          <p class="testimonial-text font-playfair">"Excelente calidad y diseño. El brazalete se ve increíble y el envío fue muy rápido."</p>
-          <p class="testimonial-author font-cinzel">Carlos M.</p>
-          <p class="testimonial-location text-warning small">Ciudad de México</p>
+    <div class="designed-grid">
+      <div class="designed-card animate-on-scroll animate-on-scroll--delay-1">
+        <img
+          src="{{ 'bracelet-1.jpg' | asset_url }}"
+          alt="Estilo urbano"
+          class="designed-card__image"
+          loading="lazy"
+          width="400"
+          height="533"
+        >
+        <div class="designed-card__overlay">
+          <h4 class="designed-card__title">Urban Style</h4>
+          <p class="designed-card__text">Colección Urbana</p>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="testimonial-card h-100">
-          <div class="testimonial-stars mb-3">
-            {%- for i in (1..5) -%}
-            <span class="star text-warning">★</span>
-            {%- endfor -%}
-          </div>
-          <p class="testimonial-text font-playfair">"La garantía de por vida me dio mucha confianza. Definitivamente compraré más."</p>
-          <p class="testimonial-author font-cinzel">Diego R.</p>
-          <p class="testimonial-location text-warning small">Guadalajara</p>
+      <div class="designed-card animate-on-scroll animate-on-scroll--delay-2">
+        <img
+          src="{{ 'bracelet-2.jpg' | asset_url }}"
+          alt="Estilo clásico"
+          class="designed-card__image"
+          loading="lazy"
+          width="400"
+          height="533"
+        >
+        <div class="designed-card__overlay">
+          <h4 class="designed-card__title">Classic Edition</h4>
+          <p class="designed-card__text">Colección Clásica</p>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="testimonial-card h-100">
-          <div class="testimonial-stars mb-3">
-            {%- for i in (1..5) -%}
-            <span class="star text-warning">★</span>
-            {%- endfor -%}
-          </div>
-          <p class="testimonial-text font-playfair">"El mejor brazalete que he comprado. La calidad del oro es impresionante."</p>
-          <p class="testimonial-author font-cinzel">Ana L.</p>
-          <p class="testimonial-location text-warning small">Monterrey</p>
+      <div class="designed-card animate-on-scroll animate-on-scroll--delay-3">
+        <img
+          src="{{ 'bracelet-3.jpg' | asset_url }}"
+          alt="Estilo premium"
+          class="designed-card__image"
+          loading="lazy"
+          width="400"
+          height="533"
+        >
+        <div class="designed-card__overlay">
+          <h4 class="designed-card__title">Premium Gold</h4>
+          <p class="designed-card__text">Colección Premium</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{%- comment -%} NEWSLETTER/CTA SECTION {%- endcomment -%}
-<section class="newsletter py-5">
-  <div class="container">
-    <div class="cta-section">
-      <div class="text-center">
-        <span class="section-tag">Únete al Club</span>
-        <h2 class="font-cinzel mb-3">No te pierdas ninguna novedad</h2>
-        <p class="text-white mb-4">Suscríbete para recibir acceso anticipado a lanzamientos y ofertas exclusivas</p>
-        <form class="newsletter-form d-flex gap-2 justify-content-center" onsubmit="handleSubscribe(event); return false;">
-          <input type="email" id="newsletterEmail" class="form-control form-control-lg" placeholder="Tu correo electrónico" required style="max-width: 350px; background: rgba(255,255,255,0.1); border: 1px solid rgba(212,175,55,0.3); color: white;">
-          <button type="submit" class="btn btn-primary btn-lg" style="background: {{ settings.primary_color }}; border-color: {{ settings.primary_color }};">Suscribirse</button>
-        </form>
-        <p class="text-white small mt-3">Sin spam. Cancela cuando quieras.</p>
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Newsletter subscription
-    const form = document.querySelector('.newsletter-form');
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('newsletterEmail').value;
-        if (email) {
-          // Integración newsletter aquí
-          alert('¡Gracias por suscribirte! Te enviaremos novedades y ofertas exclusivas.');
-          document.getElementById('newsletterEmail').value = '';
-        }
-      });
-    }
-  });
-</script>
+
+{%- comment -%} ====== SECTION 9: NEWSLETTER ====== {%- endcomment -%}
+<section class="newsletter-section" id="newsletter">
+  <div class="container container--narrow">
+    <div class="newsletter-section__header animate-on-scroll">
+      <span class="section-eyebrow">Únete al Club</span>
+      <h2 class="newsletter-section__title">No Te Pierdas Nada</h2>
+      <p class="newsletter-section__text">
+        Suscríbete para recibir acceso anticipado a lanzamientos, ofertas exclusivas y contenido VIP.
+      </p>
+    </div>
+    <form class="newsletter-form animate-on-scroll animate-on-scroll--delay-1" id="newsletter-form">
+      <input
+        type="email"
+        class="newsletter-form__input"
+        id="newsletterEmail"
+        placeholder="Tu correo electrónico"
+        required
+        aria-label="Correo electrónico"
+      >
+      <button type="submit" class="newsletter-form__btn">Suscribirse</button>
+    </form>
+    <p class="newsletter-disclaimer animate-on-scroll animate-on-scroll--delay-2">
+      Sin spam. Cancela cuando quieras. <i class="fas fa-lock" style="font-size: 0.7em; margin-left: 0.25rem;"></i>
+    </p>
+  </div>
+</section>
