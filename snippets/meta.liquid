@@ -1,0 +1,9 @@
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description | escape }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ canonical_url }}">
+{% if settings.logo %}<meta property="og:image" content="{{ settings.logo | img_url: '600x' }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{{ canonical_url }}">
+{% if settings.favicon %}<link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">{% endif %}

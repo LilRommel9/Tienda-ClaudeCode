@@ -1,0 +1,26 @@
+<section class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>{{ shop.name }}</h5>
+        <p>{{ shop.description }}</p>
+        <nav class="socials">
+          <a href="{{ settings.instagram_url }}"><i class="fab fa-instagram"></i></a>
+          <a href="{{ settings.facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+        </nav>
+      </div>
+      <div class="col-md-4">
+        <h5>Información</h5>
+        <ul>
+          <li><a href="/pages/about">Nuestra Misión</a></li>
+          <li><a href="/pages/contact">Contacto</a></li>
+          <li><a href="/pages/privacy">Política de Privacidad</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Soporte</h5>
+        <p>WhatsApp: +{{ settings.whatsapp_number }}</p>
+      </div>
+    </div>
+  </div>
+</section>

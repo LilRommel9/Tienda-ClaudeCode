@@ -1,0 +1,252 @@
+{%- comment -%}
+  ========================================
+  CONTACTO - PANTILLA DE UBICACIÓN CONTACTO
+  ========================================
+  Personaliza la ubicación de ubicación:
+  - ubicaciones de tienda antigua (dirección, horario de atención, título)
+  - función de mapa (URL de imagen o vista previa de iframe de Google Maps)
+  - título de ubicación, descripción de título, actividad
+  ========================================
+-%}
+
+{%- assign contact_data = hash |
+  | assign_key: 'store_title', 'LostGenClub México' |
+  | assign_key: 'store_address', 'Kolonya Franklin 1851-10, Vigia' |
+  | assign_key: 'store_phone', '+52 1 55 1234 5678' |
+  | assign_key: 'store_whatsapp', '5215512345678' |
+  | assign_key: 'store_email', 'info@lostgenclub.com' |
+  | assign_key: 'store_hours', 'Lun-Vie: 9:00-18:00 | Sáb: 10:00-14:00' |
+  | assign_key: 'map_embed_url', '//maps.google.com/maps/place/Luster+Franklyn+1851-10+Col+Vigia' |
+  | assign_key: 'contact_form_title', 'Envíanos un Mensaje' |
+  | assign_key: 'contact_form_button', 'Enviar Mensaje' |
+  | assign_key: 'faq_title', 'Preguntas Frecuentes' |
+  | assign_key: 'faq_subtitle', 'Encuentra respuestas rápidas a preguntas comunes' |
+  | assign_key: 'office_hours_title', 'Horario de Atención' |
+  | assign_key: 'office_hours_description', 'Visita nuestro showroon premium' |
+  | assign_key: 'shipping_title', 'Política de Envío' |
+  | assign_key: 'shipping_description', 'Envío gratis en compras +$1,800 MXN' |
+  | assign_key: 'returns_title', 'Política de Devoluciones' |
+  | assign_key: 'returns_description', '30 días para cambios y devoluciones' |
+  | assign_key: 'warranty_title', 'Garantía de Calidad' |
+  | assign_key: 'warranty_description', 'Garantía de por vida en acero inoxidable' -%}
+
+<div class="contact-page py-5">
+  <div class="container">
+    {%- comment -%} PAGE HEADER {%- endcomment -%}
+    <section class="text-center mb-5">
+      <h1 class="font-cinzel display-3 mb-3">Ubicación de Contaco</h1>
+      <p class="lead text-white">Preguntas? Contactanos por teléfono, email o visita nuestro showroon</p>
+    </section>
+
+    {%- comment -%} MAIN CONTENT {%- endcomment -%}
+    <div class="row g-4">
+      {%- comment -%} CONTACT INFO {%- endcomment -%}
+      <div class="col-lg-5">
+        <div class="contact-card p-4 h-100 rounded shadow" style="background: rgba(255,255,255,0.05); position: sticky; top: 100px;">
+          <h3 class="font-cinzel mb-4">Información de {{ contact_data.store_title }}</h3>
+
+          {%- comment -%} ADDRESS {%- endcomment -%}
+          <div class="d-flex align-items-start mb-4">
+            <div class="feature-icon me-3">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h6 class="font-cinzel mb-1">Dirección</h6>
+              <p class="text-white small mb-0">{{ contact_data.store_address }}</p>
+            </div>
+          </div>
+
+          {%- comment -%} PHONE {%- endcomment -%}
+          <div class="d-flex align-items-start mb-4">
+            <div class="feature-icon me-3">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <h6 class="font-cinzel mb-1">Teléfono</h6>
+              <a href="tel:{{ contact_data.store_phone | remove: ' ' | remove: '-' }}" class="text-white text-decoration-none small">{{ contact_data.store_phone }}</a>
+            </div>
+          </div>
+
+          {%- comment -%} WHATSAPP {%- endcomment -%}
+          <div class="d-flex align-items-start mb-4">
+            <div class="feature-icon me-3">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div>
+              <h6 class="font-cinzel mb-1">WhatsApp</h6>
+              <a href="https://wa.me/{{ contact_data.store_whatsapp }}?text=Hola%20!%20Quisiera%20informaci%C3%B3n%20de%20la%20tienda" target="_blank" class="text-white text-decoration-none small">
+                {{ contact_data.store_whatsapp }}
+              </a>
+            </div>
+          </div>
+
+          {%- comment -%} EMAIL {%- endcomment -%}
+          <div class="d-flex align-items-start mb-4">
+            <div class="feature-icon me-3">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h6 class="font-cinzel mb-1">Email</h6>
+              <a href="mailto:{{ contact_data.store_email }}" class="text-white text-decoration-none small">{{ contact_data.store_email }}</a>
+            </div>
+          </div>
+
+          {%- comment -%} HOURS {%- endcomment -%}
+          <div class="d-flex align-items-start mb-4">
+            <div class="feature-icon me-3">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div>
+              <h6 class="font-cinzel mb-1">Horario de Atención</h6>
+              <p class="text-white small mb-0">{{ contact_data.store_hours }}</p>
+            </div>
+          </div>
+
+          {%- comment -%} SOCIAL MEDIA {%- endcomment -%}
+          <div class="mt-4 pt-4 border-top">
+            <h6 class="font-cinzel mb-3">Síguenos</h6>
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-outline-light btn-sm" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="btn btn-outline-light btn-sm" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="btn btn-outline-light btn-sm" title="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="btn btn-outline-light btn-sm" title="Pinterest">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} MAP AND FAQ SECTIONS {%- endcomment -%}
+      <div class="col-lg-7">
+        {%- comment -%} MAP {%- endcomment -%}
+        <div class="map-card rounded shadow mb-4" style="height: 400px; overflow: hidden; background: rgba(0,0,0,0.3); position: relative;">
+          {%- if contact_data.map_embed_url contains 'maps.google.com' -%}
+          <iframe
+            src="{{ contact_data.map_embed_url }}"
+            width="100%"
+            height="400"
+            style="border: 0; border-radius: 8px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          {%- else -%}
+          <div class="d-flex align-items-center justify-content-center h-100">
+            <div class="text-center">
+              <i class="fas fa-map-marked-alt fa-3x text-muted mb-3"></i>
+              <p class="text-muted mb-0">Vista previa del mapa (configura el iframe URL)</p>
+            </div>
+          </div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} FAQ ACCORDION - CON BOOTSTRAP ACCORDION {%- endcomment -%}
+        <div class="faq-card rounded shadow" style="background: rgba(255,255,255,0.05);">
+          <div class="p-4 border-bottom">
+            <h3 class="font-cinzel mb-2">{{ contact_data.faq_title }}</h3>
+            <p class="text-white small mb-0">{{ contact_data.faq_subtitle }}</p>
+          </div>
+          <div class="accordion accordion-flush" id="faqAccordion">
+            {%- comment -%} SHIPPING {%- endcomment -%}
+            <div class="accordion-item" style="border-color: rgba(255,255,255,0.1);">
+              <h2 class="accordion-header" id="headingShipping">
+                <button class="accordion-button {{ settings.text_muted }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShipping" aria-expanded="true" aria-controls="collapseShipping">
+                  <i class="fas fa-shipping-fast text-warning me-3"></i> {{ contact_data.shipping_title }}
+                </button>
+              </h2>
+              <div id="collapseShipping" class="accordion-collapse collapse show" aria-labelledby="headingShipping" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-white">
+                  <p class="mb-2">{{ contact_data.shipping_description }}</p>
+                  <ul class="small mb-0">
+                    <li>Envío nacional dentro de México</li>
+                    <li>3-9 días hábiles (dependiendo de la ubicación)</li>
+                    <li>Paquetería asegurada</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {%- comment -%} RETURNS {%- endcomment -%}
+            <div class="accordion-item" style="border-color: rgba(255,255,255,0.1);">
+              <h2 class="accordion-header" id="headingReturns">
+                <button class="accordion-button collapsed {{ settings.text_muted }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReturns" aria-expanded="false" aria-controls="collapseReturns">
+                  <i class="fas fa-undo-alt text-warning me-3"></i> {{ contact_data.returns_title }}
+                </button>
+              </h2>
+              <div id="collapseReturns" class="accordion-collapse collapse" aria-labelledby="headingReturns" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-white">
+                  <p class="mb-2">{{ contact_data.returns_description }}</p>
+                  <ul class="small mb-0">
+                    <li>Productos en perfectas condiciones</li>
+                    <li>Incluye garantía de 30 días</li>
+                    <li>Solo para productos defectuosos (trabajos manuales)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {%- comment -%} WARRANTY {%- endcomment -%}
+            <div class="accordion-item" style="border-color: rgba(255,255,255,0.1);">
+              <h2 class="accordion-header" id="headingWarranty">
+                <button class="accordion-button collapsed {{ settings.text_muted }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWarranty" aria-expanded="false" aria-controls="collapseWarranty">
+                  <i class="fas fa-shield-alt text-warning me-3"></i> {{ contact_data.warranty_title }}
+                </button>
+              </h2>
+              <div id="collapseWarranty" class="accordion-collapse collapse" aria-labelledby="headingWarranty" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-white">
+                  <p class="mb-2">{{ contact_data.warranty_description }}</p>
+                  <ul class="small mb-0">
+                    <li>Reparación gratuita durante nuestra vida útil</li>
+                    <li>Período de garantía: 1 año</li>
+                    <li>No cubre golpes accidentales</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {%- comment -%} PAYMENT {%- endcomment -%}
+            <div class="accordion-item" style="border-color: rgba(255,255,255,0.1);">
+              <h2 class="accordion-header" id="headingPayment">
+                <button class="accordion-button collapsed {{ settings.text_muted }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayment" aria-expanded="false" aria-controls="collapsePayment">
+                  <i class="fas fa-credit-card text-warning me-3"></i> Métodos de Pago
+                </button>
+              </h2>
+              <div id="collapsePayment" class="accordion-collapse collapse" aria-labelledby="headingPayment" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-white">
+                  Aceptamos múltiples métodos de pago:
+                  <ul class="small mb-0 mt-2">
+                    <li>Tarjeta de Crédito/Débito (Visa, MasterCard, AMEX)</li>
+                    <li>PayPal</li>
+                    <li>Transferencia Bancaria</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Contact form submission
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('#contactForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // En una tienda real, enviaría fetch('/contact', { method: 'POST', body: new FormData(form) })
+        alert('¡Gracias por tu mensaje! Te responderemos pronto.');
+        form.reset();
+      });
+    }
+  });
+</script>

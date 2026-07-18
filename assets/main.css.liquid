@@ -1,0 +1,91 @@
+:root {
+  --primary: {{ settings.primary_color }};
+  --secondary: {{ settings.secondary_color }};
+  --accent: {{ settings.accent_color }};
+  --text-muted: {{ settings.text_muted }};
+  --success: {{ settings.success_color }};
+}
+
+body {
+  background-color: var(--secondary);
+  color: var(--accent);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header.navbar {
+  background: var(--secondary);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: var(--primary) !important;
+}
+
+.nav-link {
+  color: var(--primary) !important;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--secondary);
+}
+
+.btn-primary:hover {
+  background-color: #b8860b;
+  color: var(--primary);
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  transform: translateX(-50%);
+}
+
+/* Hero */
+.hero {
+  background: var(--primary);
+  color: white;
+  padding: 5rem 0;
+}
+.hero-content h1 { font-size: 2.5rem; }
+.hero-buttons a { margin: 0 0.5rem; padding: 0.75rem 1.5rem; }
+
+/* Product Grid */
+.product-grid { background: var(--secondary); padding: 3rem 0; }
+.product-card {
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.product-card:hover { transform: translateY(-5px); }
+
+/* Footer */
+.footer {
+  background: var(--primary);
+  color: white;
+  padding: 2rem 0;
+}
+.footer a { color: white; }

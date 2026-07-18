@@ -1,0 +1,105 @@
+{%- comment -%}
+  ========================================
+  ABOUT PAGE - NOSOTROS
+  ========================================
+  Personaliza el contenido editando las variables abajo:
+  - brand_story: Historia de la marca
+  - mission: Misión
+  - values: Valores (array)
+  - founder_image: URL de imagen del fundador
+  ========================================
+-%}
+
+{%- assign about_data = hash |
+  | assign_key: 'brand_story', 'Nacimos con la visión de crear joyas que duren toda la vida. Desde México para el mundo, cada pieza cuenta una historia de artesanía y pasión.' |
+  | assign_key: 'mission', 'Democratizar el lujo accesible con materiales premium y diseños atemporales.' |
+  | assign_key: 'founder_name', 'Fundador' |
+  | assign_key: 'founder_story', 'Después de años buscando joyas de calidad que resistieran el uso diario, decidí crear mi propia marca. Cada pieza es probada personalmente.' |
+  | assign_key: 'values', array: [
+    { | assign_key: 'title', 'Calidad' | | assign_key: 'icon', 'fa-gem' | | assign_key: 'desc', 'Materiales premium que duran toda la vida' },
+    { | assign_key: 'title', 'Autenticidad' | | assign_key: 'icon', 'fa-heart' | | assign_key: 'desc', 'Diseños originales, no copias' },
+    { | assign_key: 'title', 'Compromiso' | | assign_key: 'icon', 'fa-shield' | | assign_key: 'desc', 'Garantía de por vida en acero inoxidable' },
+    { | assign_key: 'title', 'Comunidad' | | assign_key: 'icon', 'fa-users' | | assign_key: 'desc', 'Más que clientes, una familia' }
+  ]
+| | assign_key: 'stats', array: [
+  { | assign_key: 'number', '10K+' | | assign_key: 'label', 'Clientes Satisfechos' },
+  { | assign_key: 'number', '50K+' | | assign_key: 'label', 'Piezas Entregadas' },
+  { | assign_key: 'number', '99%' | | assign_key: 'label', 'Tasa de Satisfacción' },
+  { | assign_key: 'number', '15+' | | assign_key: 'label', 'Países Atendidos' }
+] -%}
+
+<div class="about-page py-5">
+  <div class="container">
+    {%- comment -%} HERO {%- endcomment -%}
+    <section class="text-center mb-5">
+      <h1 class="font-cinzel display-3 mb-4">Nuestra Historia</h1>
+      <p class="lead text-white max-w-3xl mx-auto">{{ about_data.brand_story }}</p>
+    </section>
+
+    {%- comment -%} MISSION {%- endcomment -%}
+    <section class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <h2 class="font-cinzel mb-3">Nuestra Misión</h2>
+        <p class="text-white">{{ about_data.mission }}</p>
+        <a href="/collections/all" class="btn btn-primary mt-3">Ver Colección</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="p-5 rounded" style="background: linear-gradient(135deg, rgba({{ settings.primary_color }},0.1) 0%, {{ settings.secondary_color }} 100%);">
+          <i class="fas fa-bullseye fa-4x text-warning"></i>
+        </div>
+      </div>
+    </section>
+
+    {%- comment -%} FOUNDER {%- endcomment -%}
+    <section class="row align-items-center mb-5">
+      <div class="col-md-6 text-center order-md-2">
+        <div class="p-5 rounded" style="background: linear-gradient(135deg, {{ settings.secondary_color }} 0%, rgba({{ settings.primary_color }},0.1) 100%);">
+          <i class="fas fa-user-tie fa-4x text-warning"></i>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="font-cinzel mb-3">Conoce a {{ about_data.founder_name }}</h2>
+        <p class="text-white">{{ about_data.founder_story }}</p>
+      </div>
+    </section>
+
+    {%- comment -%} VALUES {%- endcomment -%}
+    <section class="mb-5">
+      <div class="text-center mb-5">
+        <h2 class="font-cinzel">Nuestros Valores</h2>
+      </div>
+      <div class="row g-4">
+        {%- for value in about_data.values -%}
+        <div class="col-md-3">
+          <div class="value-card text-center p-4 h-100" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
+            <i class="fas {{ value.icon }} fa-3x text-warning mb-3"></i>
+            <h5 class="font-cinzel">{{ value.title }}</h5>
+            <p class="text-white small">{{ value.desc }}</p>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </section>
+
+    {%- comment -%} STATS {%- endcomment -%}
+    <section class="mb-5" style="background: linear-gradient(135deg, rgba({{ settings.primary_color }},0.1) 0%, {{ settings.secondary_color }} 100%); border-radius: 16px; padding: 3rem;">
+      <div class="row text-center">
+        {%- for stat in about_data.stats -%}
+        <div class="col-md-3">
+          <h2 class="font-cinzel text-warning mb-1">{{ stat.number }}</h2>
+          <p class="text-white small mb-0">{{ stat.label }}</p>
+        </div>
+        {%- endfor -%}
+      </div>
+    </section>
+
+    {%- comment -%} CTA {%- endcomment -%}
+    <section class="text-center">
+      <div class="cta-section" style="background: linear-gradient(135deg, rgba({{ settings.primary_color }},0.1) 0%, {{ settings.secondary_color }} 100%); border: 1px solid rgba({{ settings.primary_color }},0.3); border-radius: 16px; padding: 3rem;">
+        <h2 class="font-cinzel mb-3">Únete a la Familia {{ settings.brand_name }}</h2>
+        <p class="text-white mb-4">Descubre por qué miles de hombres confían en nuestras joyas</p>
+        <a href="/collections/all" class="btn btn-primary btn-lg">Explorar Colección</a>
+      </div>
+    </section>
+  </div>
+</div>
