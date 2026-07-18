@@ -1,0 +1,51 @@
+{%- comment -%}
+  ========================================
+  CONFIGURACIÓN DE LOCALE Y MONEDA - PERSONALIZABLE
+  ========================================
+
+  Personaliza estos valores para adaptar a cada región:
+
+  - locale: "es-MX" para México, "en-US" para EE. UU.
+  - currency: "MXN" o "USD"
+  - timezone: "America/Mexico_City", "America/New_York", "America/Los_Angeles"
+  - date_format: "%d/%m/%Y", "%m/%d/%Y", "%B %d, %Y"
+  - time_format: "%H:%M", "%I:%M %p"
+  - free_shipping_threshold: Monto para envío gratis
+  - free_shipping_threshold_usd: Umbral en USD
+  - enforce_closed_coupons: true/false (si cupones deben estar abiertos)
+  ========================================
+-%}
+
+{%- assign lgc_config = (
+  "locale" => "es-MX",
+  "currency" => "MXN",
+  "currency_symbol" => "$",
+  "currency_format" => "$",
+  "timezone" => "America/Mexico_City",
+  "date_format" => "%d/%m/%Y",
+  "time_format" => "%H:%M",
+  "language" => "es-ES",
+  "country" => "MX",
+  "region" => "NA",
+  "currency_code" => "MXN",
+  "currency_prefix" => "$",
+  "currency_suffix" => "",
+  "free_shipping_threshold" => 1800,
+  "free_shipping_threshold_usd" => 95,
+  "enforce_closed_coupons" => true,
+  "shipping_label" => "Envío",
+  "currency_localization" => (
+    "MXN" => (
+      "symbol" => "$",
+      "format" => "$ {{ amount }}",
+      "decimal_separator" => ".",
+      "thousands_separator" => ","
+    ),
+    "USD" => (
+      "symbol" => "$",
+      "format" => "$ {{ amount }}",
+      "decimal_separator" => ".",
+      "thousands_separator" => ","
+    )
+  )
+) -%}

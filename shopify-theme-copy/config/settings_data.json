@@ -1,0 +1,32 @@
+{
+  "current": {
+    "brand_name": "LostGenClub",
+    "brand_tagline": "Jewelry That Lasts",
+    "primary_color": "#d4af37",
+    "secondary_color": "#1a1a1a",
+    "accent_color": "#ffffff",
+    "whatsapp_number": "5215512345678",
+    "email": "info@lostgenclub.com",
+    "phone": "+52 1 55 1234 5678",
+    "instagram_url": "https://instagram.com/lostgenclub",
+    "facebook_url": "https://facebook.com/lostgenclub",
+    "twitter_url": "https://twitter.com/lostgenclub",
+    "free_shipping_threshold": 1800,
+    "shipping_days": "4-9",
+    "warranty_message": "Lifetime Warranty",
+    "material_note": "316L Stainless Steel & 18K Gold PVD",
+    "hero_title": "Timeless Men Jewelry",
+    "hero_subtitle": "Discover Mexico's Premier Luxury Bracelet Destination",
+    "hero_cta_text": "Explore Collection",
+    "hero_cta_url": "/collections/all"
+  },
+  "presets": {
+    "LostGenClub Default": {
+      "brand_name": "LostGenClub",
+      "brand_tagline": "Jewelry That Lasts",
+      "primary_color": "#d4af37",
+      "secondary_color": "#1a1a1a",
+      "accent_color": "#ffffff"
+    }
+  }
+}

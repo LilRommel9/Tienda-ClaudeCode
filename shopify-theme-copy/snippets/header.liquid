@@ -1,0 +1,23 @@
+<div class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="{{ shop.url }}">
+        <img src="/assets/logo.svg" alt="{{ shop.name }}" width="150">
+      </a>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="{{ shop.url }}">Inicio</a></li>
+        <li><a href="/collections/all">Colecciones</a></li>
+        <li><a href="/pages/about">Nosotros</a></li>
+        <li><a href="/pages/contact">Contacto</a></li>
+      </ul>
+      <div class="cart-icon">
+        <a href="/cart">
+          <i class="fa fa-cart-plus"></i>
+          <span class="badge">{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>

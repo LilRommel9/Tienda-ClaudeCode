@@ -1,0 +1,168 @@
+{%- comment -%}
+  ========================================
+  COLLECTION PAGE - PLANTILLA PERSONALIZABLE
+  ========================================
+  Esta plantilla muestra productos por colección.
+
+  Personaliza:
+  - banner_image: Imagen del banner de la colección
+  - collection.title: Título (automático)
+  - collection.description: Descripción (automático)
+  - per_page: Productos por página (default: 12)
+  - show_filters: Mostrar filtros de categorías (true/false)
+  ========================================
+-%}
+
+<div class="collection-page py-5">
+  <div class="container">
+    {%- comment -%} BREADCRUMB {%- endcomment -%}
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ collection.title }}</li>
+      </ol>
+    </nav>
+
+    {%- comment -%} COLLECTION HERO {%- endcomment -%}
+    <section class="collection-hero mb-5">
+      <div class="text-center">
+        <h1 class="font-cinzel display-4 mb-3">{{ collection.title }}</h1>
+        {%- if collection.description -%}
+        <p class="lead text-white">{{ collection.description | truncate: 200 }}</p>
+        {%- endif -%}
+
+        {%- comment -%} BANNER IMAGE {%- endcomment -%}
+        {%- if collection.image -%}
+        <img src="{{ collection.image | img_url: '1200x600' }}" alt="{{ collection.title }}" class="img-fluid rounded mt-4 shadow" style="max-height: 400px; object-fit: cover;">
+        {%- endif -%}
+      </div>
+    </section>
+
+    {%- comment -%} FILTERS {%- endcomment -%}
+    {%- if collection.products.size > 0 -%}
+    <div class="collection-filters mb-4">
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        <span class="text-white">Filtrar por:</span>
+        <button class="btn btn-outline-light btn-sm" onclick="filterProducts('all')">Todos</button>
+        <button class="btn btn-outline-light btn-sm" onclick="filterProducts('featured')">Destacados</button>
+        <button class="btn btn-outline-light btn-sm" onclick="filterProducts('sale')">En Oferta</button>
+        <button class="btn btn-outline-light btn-sm" onclick="filterProducts('new')">Nuevos</button>
+      </div>
+    </div>
+    {%- endif -%}
+
+    {%- comment -%} PRODUCTS GRID {%- endcomment -%}
+    <div class="row g-4" id="productsContainer">
+      {%- for product in collection.products -%}
+      <div class="col-md-4 col-lg-3 product-card-wrapper" data-filter="{{ product.metafields.custom.featured | default: 'regular' }}">
+        <div class="product-card h-100">
+          <div class="product-image">
+            {%- if product.featured_image -%}
+            <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" class="img-fluid">
+            {%- else -%}
+            <img src="https://imgur.com/a/Q2IoVkM" alt="Default" class="img-fluid">
+            {%- endif -%}
+
+            {%- if product.compare_at_price > product.price -%}
+            <span class="product-badge discount-badge">
+              -{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%
+            </span>
+            {%- endif -%}
+          </div>
+
+          <div class="product-info">
+            <h3 class="product-title font-cinzel h6">
+              <a href="{{ product.url }}" class="text-decoration-none">{{ product.title }}</a>
+            </h3>
+
+            <div class="product-price mb-2">
+              <span class="price-current fw-bold">{{ product.price | money }}</span>
+              {%- if product.compare_at_price > product.price -%}
+              <span class="price-original text-decoration-line-through text-muted ms-2">{{ product.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+
+            <div class="product-rating mb-2">
+              <span class="text-warning">★</span>
+              <span class="text-warning">★</span>
+              <span class="text-warning">★</span>
+              <span class="text-warning">★</span>
+              <span class="text-warning">★</span>
+            </div>
+
+            <button class="btn btn-sm btn-outline-primary w-100" onclick="addToCartFromProduct('{{ product.id }}', '{{ product.title }}', {{ product.price | money_without_currency }}, '{{ product.featured_image | img_url: 'small' }}')" {% unless product.available %}disabled{% endunless %}>
+              <i class="fas fa-shopping-cart me-1"></i> Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} PAGINATION {%- endcomment -%}
+    {%- if collection.products_count > collection.products.size -%}
+    <div class="pagination mt-5 text-center">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {%- if paginate.previous -%}
+          <li class="page-item">
+            <a class="page-link" href="{{ paginate.previous.url }}" aria-label="Previous">
+              <i class="fas fa-chevron-left"></i>
+            </a>
+          </li>
+          {%- else -%}
+          <li class="page-item disabled">
+            <span class="page-link"><i class="fas fa-chevron-left"></i></span>
+          </li>
+          {%- endif -%}
+
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}
+            <li class="page-item">
+              <a class="page-link" href="{{ part.url }}">{{ part.title }}</a>
+            </li>
+            {%- else -%}
+            <li class="page-item active">
+              <span class="page-link">{{ part.title }}</span>
+            </li>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if paginate.next -%}
+          <li class="page-item">
+            <a class="page-link" href="{{ paginate.next.url }}" aria-label="Next">
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </li>
+          {%- else -%}
+          <li class="page-item disabled">
+            <span class="page-link"><i class="fas fa-chevron-right"></i></span>
+          </li>
+          {%- endif -%}
+        </ul>
+      </nav>
+    </div>
+    {%- endif -%}
+  {%- else -%}
+  <div class="text-center py-5">
+    <h3 class="font-cinzel mb-3">Colección vacía</h3>
+    <p class="text-white">No hay productos en esta colección todavía.</p>
+    <a href="/collections/all" class="btn btn-primary">Ver todas las colecciones</a>
+  </div>
+  {%- endif -%}
+  </div>
+</div>
+
+<script>
+  function filterProducts(category) {
+    const products = document.querySelectorAll('.product-card-wrapper');
+    products.forEach(product => {
+      const filter = product.getAttribute('data-filter');
+      if (category === 'all' || filter === category) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  }
+</script>

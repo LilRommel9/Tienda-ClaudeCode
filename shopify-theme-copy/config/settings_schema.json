@@ -1,0 +1,146 @@
+[
+  {
+    "name": "LostGenClub Theme Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Configuration"
+      },
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Brand Name",
+        "default": "LostGenClub"
+      },
+      {
+        "type": "text",
+        "id": "brand_tagline",
+        "label": "Brand Tagline",
+        "default": "Jewelry That Lasts"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary Color",
+        "default": "#d4af37"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Secondary Color",
+        "default": "#1a1a1a"
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Contact Information"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "WhatsApp Number",
+        "default": "5215512345678"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Contact Email",
+        "default": "info@lostgenclub.com"
+      },
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Phone Number",
+        "default": "+52 1 55 1234 5678"
+      },
+      {
+        "type": "header",
+        "content": "Social Media"
+      },
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "twitter_url",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "header",
+        "content": "Shipping & Warranty"
+      },
+      {
+        "type": "range",
+        "id": "free_shipping_threshold",
+        "label": "Free Shipping Threshold (MXN)",
+        "min": 0,
+        "max": 5000,
+        "step": 100,
+        "default": 1800
+      },
+      {
+        "type": "text",
+        "id": "shipping_days",
+        "label": "Shipping Days",
+        "default": "4-9"
+      },
+      {
+        "type": "text",
+        "id": "warranty_message",
+        "label": "Warranty Message",
+        "default": "Lifetime Warranty"
+      },
+      {
+        "type": "text",
+        "id": "material_note",
+        "label": "Material Note",
+        "default": "316L Stainless Steel & 18K Gold PVD"
+      },
+      {
+        "type": "header",
+        "content": "Hero Section"
+      },
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "Hero Title",
+        "default": "Timeless Men Jewelry"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_subtitle",
+        "label": "Hero Subtitle",
+        "default": "Discover Mexico's Premier Luxury Bracelet Destination"
+      },
+      {
+        "type": "text",
+        "id": "hero_cta_text",
+        "label": "Hero CTA Text",
+        "default": "Explore Collection"
+      },
+      {
+        "type": "url",
+        "id": "hero_cta_url",
+        "label": "Hero CTA URL",
+        "default": "/collections/all"
+      }
+    ]
+  }
+]

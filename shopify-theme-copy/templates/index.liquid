@@ -1,0 +1,260 @@
+{%- comment -%}
+  ========================================
+  LOSTGENCLUB - HOME PAGE
+  ========================================
+  Esta es la página principal de tu tienda.
+
+  Secciones incluidas:
+  1. Hero (banner principal)
+  2. Productos destacados
+  3. Colecciones
+  4. Por qué elegirnos
+  5. Testimonios
+  6. Newsletter/CTA
+  ========================================
+-%}
+
+{%- comment -%} HERO SECTION {%- endcomment -%}
+<section class="hero">
+  <div class="container">
+    <div class="text-center text-white text-sm-start" style="max-width: 900px; margin: 0 auto;">
+      <p class="text-warning mb-4" style="text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; font-size: 0.8rem;">
+        {{ lgc_config.brand_tagline }}
+      </p>
+      <h1 class="display-1 fw-bold mb-4 text-white" style="font-family: 'Cinzel', serif; font-size: 3.5rem; font-weight: 900; line-height: 1.1;">
+        <span class="text-warning">{{ lgc_config.brand_name }}</span>
+      </h1>
+      <p class="lead mb-5" style="font-size: 1.2rem; opacity: 0.8; max-width: 600px; margin: 0 auto;">
+        {{ lgc_config.brand_description }}
+      </p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4" style="gap: 1rem;">
+        <a href="/collections/all" class="btn btn-primary px-4" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+          Ver Colecciones
+        </a>
+        <a href="/pages/about" class="btn btn-outline-light px-4" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+          Conócenos
+        </a>
+      </div>
+      <div class="scroll-indicator animate-float" style="margin-top: 3rem;">
+        <div class="scroll-line"></div>
+        <p class="scroll-text text-warning mb-0">Scroll</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} FEATURED PRODUCTS SECTION {%- endcomment -%}
+<section class="featured py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-tag">{{ lgc_config.brand_name }}</span>
+      <h2 class="font-cinzel mb-3">Productos Destacados</h2>
+      <p class="text-white">Las piezas más populares de nuestra colección exclusiva</p>
+    </div>
+    <div class="row g-4">
+      {%- assign featured_products = collection.products | where: "featured", true -%}
+      {%- for product in featured_products limit:6 -%}
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card h-100">
+          <div class="product-image">
+            {%- if product.featured_image -%}
+            <img src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" loading="lazy">
+            {%- else -%}
+            <img src="https://imgur.com/a/Q2IoVkM" alt="Imagen por defecto" loading="lazy">
+            {%- endif -%}
+            {%- if product.compare_at_price > product.price -%}
+            <span class="product-badge discount-badge">
+              -{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%
+            </span>
+            {%- endif -%}
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">{{ product.title }}</h3>
+            <div class="product-price">
+              <span class="price-current">{{ product.price | money }}</span>
+              {%- if product.compare_at_price > product.price -%}
+              <span class="product-price-old">{{ product.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+            <div class="product-rating">
+              {%- assign rating = product.metafields.reviews.rating.value | default: 5 -%}
+              {%- for i in (1..5) -%}
+                {%- if i <= rating -%}★{%- else -%}☆{%- endif -%}
+              {%- endfor -%}
+            </div>
+            <button class="btn-add-to-cart" onclick="addToCart('{{ product.title }}', {{ product.price | money_without_currency }}, '{{ product.featured_image | img_url: 'small' }}')">
+              Agregar al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+      {%- endfor -%}
+    </div>
+    <div class="text-center mt-5">
+      <a href="/collections/all" class="btn btn-outline-light btn-lg">Ver Todos los Productos</a>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} COLLECTIONS SECTION {%- endcomment -%}
+<section class="collections py-5" style="background: linear-gradient(135deg, rgba({{ lgc_config.secondary_color }},0.3) 0%, {{ lgc_config.secondary_color }} 100%);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-tag">Nuestras Colecciones</span>
+      <h2 class="font-cinzel mb-3">Explora por Categoría</h2>
+      <p class="text-white">Encuentra el estilo perfecto para ti</p>
+    </div>
+    <div class="row g-4">
+      {%- assign collection_list = collections -%}
+      {%- for collection in collection_list limit:6 -%}
+      <div class="col-md-6 col-lg-4">
+        <a href="{{ collection.url }}" class="text-decoration-none">
+          <div class="collection-card h-100 text-center">
+            <div class="collection-image mb-3">
+              {%- if collection.image -%}
+              <img src="{{ collection.image | img_url: '400x400' }}" alt="{{ collection.title }}" class="img-fluid rounded" style="height: 200px; object-fit: cover; width: 100%;">
+              {%- else -%}
+              <img src="https://imgur.com/a/Q2IoVkM" alt="Default" class="img-fluid rounded" style="height: 200px; object-fit: cover; width: 100%;">
+              {%- endif -%}
+            </div>
+            <h4 class="collection-title font-cinzel">{{ collection.title }}</h4>
+            <p class="text-white small">{{ collection.products_count }} productos</p>
+          </div>
+        </a>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- comment -%} FEATURES SECTION {%- endcomment -%}
+<section class="features py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-tag">Por qué elegirnos</span>
+      <h2 class="font-cinzel mb-3">La Diferencia {{ lgc_config.brand_name }}</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="feature text-center">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h5 class="font-cinzel">{{ lgc_config.warranty_message }}</h5>
+          <p class="text-white small">Garantía de por vida en todas nuestras piezas de acero inoxidable</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="feature text-center">
+          <div class="feature-icon">
+            <i class="fas fa-tint"></i>
+          </div>
+          <h5 class="font-cinzel">Waterproof</h5>
+          <p class="text-white small">Resistente al agua y al sudor, perfecto para el uso diario</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="feature text-center">
+          <div class="feature-icon">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h5 class="font-cinzel">Materiales Premium</h5>
+          <p class="text-white small">{{ lgc_config.material_note }}</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="feature text-center">
+          <div class="feature-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <h5 class="font-cinzel">Envío Gratis</h5>
+          <p class="text-white small">En compras mayores a ${{ lgc_config.free_shipping_threshold }} MXN</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} TESTIMONIALS SECTION {%- endcomment -%}
+<section class="testimonials py-5" style="background: linear-gradient(135deg, rgba({{ lgc_config.secondary_color }},0.3) 0%, {{ lgc_config.secondary_color }} 100%);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="section-tag">Lo que dicen</span>
+      <h2 class="font-cinzel mb-3">Testimonios Reales</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="testimonial-card h-100">
+          <div class="testimonial-stars mb-3">
+            {%- for i in (1..5) -%}
+            <span class="star text-warning">★</span>
+            {%- endfor -%}
+          </div>
+          <p class="testimonial-text font-playfair">"Excelente calidad y diseño. El brazalete se ve increíble y el envío fue muy rápido."</p>
+          <p class="testimonial-author font-cinzel">Carlos M.</p>
+          <p class="testimonial-location text-warning small">Ciudad de México</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card h-100">
+          <div class="testimonial-stars mb-3">
+            {%- for i in (1..5) -%}
+            <span class="star text-warning">★</span>
+            {%- endfor -%}
+          </div>
+          <p class="testimonial-text font-playfair">"La garantía de por vida me dio mucha confianza. Definitivamente compraré más."</p>
+          <p class="testimonial-author font-cinzel">Diego R.</p>
+          <p class="testimonial-location text-warning small">Guadalajara</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial-card h-100">
+          <div class="testimonial-stars mb-3">
+            {%- for i in (1..5) -%}
+            <span class="star text-warning">★</span>
+            {%- endfor -%}
+          </div>
+          <p class="testimonial-text font-playfair">"El mejor brazalete que he comprado. La calidad del oro es impresionante."</p>
+          <p class="testimonial-author font-cinzel">Ana L.</p>
+          <p class="testimonial-location text-warning small">Monterrey</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} NEWSLETTER/CTA SECTION {%- endcomment -%}
+<section class="newsletter py-5">
+  <div class="container">
+    <div class="cta-section">
+      <div class="text-center">
+        <span class="section-tag">Únete al Club</span>
+        <h2 class="font-cinzel mb-3">No te pierdas ninguna novedad</h2>
+        <p class="text-white mb-4">Suscríbete para recibir acceso anticipado a lanzamientos y ofertas exclusivas</p>
+        <form class="newsletter-form d-flex gap-2 justify-content-center" onsubmit="handleSubscribe(event); return false;">
+          <input type="email" id="newsletterEmail" class="form-control form-control-lg" placeholder="Tu correo electrónico" required style="max-width: 350px; background: rgba(255,255,255,0.1); border: 1px solid rgba(212,175,55,0.3); color: white;">
+          <button type="submit" class="btn btn-primary btn-lg" style="background: {{ lgc_config.primary_color }}; border-color: {{ lgc_config.primary_color }};">Suscribirse</button>
+        </form>
+        <p class="text-white small mt-3">Sin spam. Cancela cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter subscription
+    const form = document.querySelector('.newsletter-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletterEmail').value;
+        if (email) {
+          // Integración newsletter aquí
+          alert('¡Gracias por suscribirte! Te enviaremos novedades y ofertas exclusivas.');
+          document.getElementById('newsletterEmail').value = '';
+        }
+      });
+    }
+  });
+</script>

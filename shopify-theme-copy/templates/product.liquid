@@ -1,0 +1,227 @@
+{%- comment -%}
+  ========================================
+  PRODUCT PAGE - PLANTILLA PERSONALIZABLE
+  ========================================
+  Esta plantilla se usa para todos los productos.
+  Los datos se cargan automáticamente desde Shopify.
+
+  Variables disponibles:
+  - product.title
+  - product.price
+  - product.compare_at_price
+  - product.description
+  - product.featured_image
+  - product.images
+  - product.variants
+  - product.metafields (para datos personalizados)
+  ========================================
+-%}
+
+<div class="product-page py-5">
+  <div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="/collections/all">Tienda</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
+      </ol>
+    </nav>
+
+    <div class="row g-5">
+      {%- comment -%} PRODUCT IMAGES {%- endcomment -%}
+      <div class="col-lg-6">
+        <div class="product-gallery">
+          <div class="main-image mb-3">
+            {%- if product.featured_image -%}
+            <img id="mainProductImage" src="{{ product.featured_image | img_url: '800x800' }}" alt="{{ product.title }}" class="img-fluid rounded shadow">
+            {%- else -%}
+            <img id="mainProductImage" src="https://imgur.com/a/Q2IoVkM" alt="Imagen por defecto" class="img-fluid rounded shadow">
+            {%- endif -%}
+          </div>
+          {%- if product.images.size > 1 -%}
+          <div class="thumbnail-images d-flex gap-2">
+            {%- for image in product.images -%}
+            <img src="{{ image | img_url: '150x150' }}" alt="{{ product.title }} {{ forloop.index }}" class="img-thumbnail" style="width: 80px; cursor: pointer;" onclick="changeMainImage('{{ image | img_url: '800x800' }}')">
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} PRODUCT INFO {%- endcomment -%}
+      <div class="col-lg-6">
+        <div class="product-info">
+          {%- comment -%} BADGES {%- endcomment -%}
+          <div class="mb-3">
+            {%- if product.compare_at_price > product.price -%}
+            <span class="badge bg-danger me-2">OFERTA</span>
+            {%- endif -%}
+            {%- if product.metafields.custom.is_new -%}
+            <span class="badge bg-primary me-2">NUEVO</span>
+            {%- endif -%}
+            {%- if product.available == false -%}
+            <span class="badge bg-secondary">AGOTADO</span>
+            {%- endif -%}
+          </div>
+
+          <h1 class="font-cinzel mb-3">{{ product.title }}</h1>
+
+          {%- comment -%} PRICE {%- endcomment -%}
+          <div class="product-price mb-4">
+            <span class="price-current h2 text-warning fw-bold">{{ product.price | money }}</span>
+            {%- if product.compare_at_price > product.price -%}
+            <span class="price-original text-muted text-decoration-line-through ms-3">{{ product.compare_at_price | money }}</span>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} RATING {%- endcomment -%}
+          <div class="product-rating mb-4">
+            {%- assign rating = product.metafields.reviews.rating.value | default: 5 -%}
+            {%- for i in (1..5) -%}
+              {%- if i <= rating -%}
+              <span class="star text-warning">★</span>
+              {%- else -%}
+              <span class="star text-muted">☆</span>
+              {%- endif -%}
+            {%- endfor -%}
+            <span class="rating-value text-white ms-2">({{ product.metafields.reviews.rating_count.value | default: 0 }})</span>
+          </div>
+
+          {%- comment -%} DESCRIPTION {%- endcomment -%}
+          <div class="product-description mb-4">
+            {{ product.description }}
+          </div>
+
+          {%- comment -%} VARIANTS {%- endcomment -%}
+          {%- if product.variants.size > 1 -%}
+          <div class="product-variants mb-4">
+            <h6 class="font-cinzel mb-3">Selecciona una opción:</h6>
+            <select class="form-select form-select-lg mb-3" id="variantSelect" onchange="updatePrice()">
+              {%- for variant in product.variants -%}
+              <option value="{{ variant.id }}" data-price="{{ variant.price | money_without_currency }}" {% unless variant.available %}disabled{% endunless %}>
+                {{ variant.title }}{% unless variant.available %} - AGOTADO{% endunless %}
+              </option>
+              {%- endfor -%}
+            </select>
+          </div>
+          {%- endif -%}
+
+          {%- comment -%} QUANTITY & ADD TO CART {%- endcomment -%}
+          <div class="product-actions mb-4">
+            <div class="d-flex gap-3 align-items-center mb-3">
+              <label for="quantity" class="form-label mb-0">Cantidad:</label>
+              <div class="input-group" style="width: 120px;">
+                <button class="btn btn-outline-secondary" type="button" onclick="decreaseQty()">-</button>
+                <input type="number" class="form-control text-center" id="quantity" value="1" min="1" max="{{ product.selected_or_first_available_variant.inventory_quantity | default: 99 }}">
+                <button class="btn btn-outline-secondary" type="button" onclick="increaseQty()">+</button>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary btn-lg" onclick="addToCartFromProduct('{{ product.id }}', '{{ product.title }}', {{ product.price | money_without_currency }}, '{{ product.featured_image | img_url: 'small' }}')" {% unless product.available %}disabled{% endunless %}>
+                <i class="fas fa-shopping-cart me-2"></i>
+                {{ product.available | default: 'Agregar al Carrito' }}
+              </button>
+
+              {%- comment -%} WHATSAPP BUY BUTTON {%- endcomment -%}
+              <a href="https://wa.me/{{ lgc_config.whatsapp_number }}?text={{ 'Hola! Me interesa el producto: ' | url_encode }}{{ product.title | url_encode }}{{ ' por ' | url_encode }}{{ product.price | money | url_encode }}" class="btn btn-success btn-lg" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp me-2"></i>
+                Comprar por WhatsApp
+              </a>
+            </div>
+          </div>
+
+          {%- comment -%} FEATURES {%- endcomment -%}
+          <div class="product-features mt-4">
+            <h6 class="font-cinzel mb-3">Características:</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> {{ lgc_config.material_note }}</li>
+              <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> {{ lgc_config.warranty_message }}</li>
+              <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Resistente al agua y sudor</li>
+              <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Envío gratis en compras +${{ lgc_config.free_shipping_threshold }} MXN</li>
+            </ul>
+          </div>
+
+          {%- comment -%} SHARE {%- endcomment -%}
+          <div class="product-share mt-4 pt-4 border-top">
+            <h6 class="font-cinzel mb-3">Compartir:</h6>
+            <div class="d-flex gap-2">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text={{ product.title | url_encode }}" target="_blank" class="btn btn-outline-info btn-sm">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://wa.me/{{ lgc_config.whatsapp_number }}?text={{ 'Mira este producto: ' | url_encode }}{{ shop.url }}{{ product.url | url_encode }}" target="_blank" class="btn btn-outline-success btn-sm">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} RELATED PRODUCTS {%- endcomment -%}
+    {%- if collection -%}
+    <div class="related-products mt-5 pt-5 border-top">
+      <h3 class="font-cinzel text-center mb-4">También te puede interesar</h3>
+      <div class="row g-4">
+        {%- assign related_products = collection.products | where: "id", "!=", product.id | limit: 4 -%}
+        {%- for related in related_products -%}
+        <div class="col-md-3">
+          <div class="product-card h-100">
+            <div class="product-image">
+              {%- if related.featured_image -%}
+              <img src="{{ related.featured_image | img_url: '400x400' }}" alt="{{ related.title }}" class="img-fluid">
+              {%- else -%}
+              <img src="https://imgur.com/a/Q2IoVkM" alt="Default" class="img-fluid">
+              {%- endif -%}
+            </div>
+            <div class="product-info">
+              <h5 class="product-title">{{ related.title }}</h5>
+              <p class="product-price">{{ related.price | money }}</p>
+              <a href="{{ related.url }}" class="btn btn-outline-primary btn-sm">Ver detalles</a>
+            </div>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  function changeMainImage(src) {
+    document.getElementById('mainProductImage').src = src;
+  }
+
+  function updatePrice() {
+    const select = document.getElementById('variantSelect');
+    const selected = select.options[select.selectedIndex];
+    const price = selected.getAttribute('data-price');
+    document.querySelector('.price-current').textContent = '$' + price + ' MXN';
+  }
+
+  function increaseQty() {
+    const input = document.getElementById('quantity');
+    const max = parseInt(input.max) || 99;
+    if (parseInt(input.value) < max) {
+      input.value = parseInt(input.value) + 1;
+    }
+  }
+
+  function decreaseQty() {
+    const input = document.getElementById('quantity');
+    if (parseInt(input.value) > 1) {
+      input.value = parseInt(input.value) - 1;
+    }
+  }
+
+  function addToCartFromProduct(productId, title, price, image) {
+    const qty = parseInt(document.getElementById('quantity').value);
+    for (let i = 0; i < qty; i++) {
+      addToCart(title, price, image);
+    }
+  }
+</script>
