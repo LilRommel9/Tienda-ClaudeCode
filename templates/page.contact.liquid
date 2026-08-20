@@ -9,26 +9,7 @@
   ========================================
 {%- endcomment -%}
 
-{%- assign contact_data = hash |
-  | assign_key: 'store_title', 'LostGenClub México' |
-  | assign_key: 'store_address', 'Kolonya Franklin 1851-10, Vigia' |
-  | assign_key: 'store_phone', '+52 1 55 1234 5678' |
-  | assign_key: 'store_whatsapp', '5215512345678' |
-  | assign_key: 'store_email', 'info@lostgenclub.com' |
-  | assign_key: 'store_hours', 'Lun-Vie: 9:00-18:00 | Sáb: 10:00-14:00' |
-  | assign_key: 'map_embed_url', '//maps.google.com/maps/place/Luster+Franklyn+1851-10+Col+Vigia' |
-  | assign_key: 'contact_form_title', 'Envíanos un Mensaje' |
-  | assign_key: 'contact_form_button', 'Enviar Mensaje' |
-  | assign_key: 'faq_title', 'Preguntas Frecuentes' |
-  | assign_key: 'faq_subtitle', 'Encuentra respuestas rápidas a preguntas comunes' |
-  | assign_key: 'office_hours_title', 'Horario de Atención' |
-  | assign_key: 'office_hours_description', 'Visita nuestro showroon premium' |
-  | assign_key: 'shipping_title', 'Política de Envío' |
-  | assign_key: 'shipping_description', 'Envío gratis en compras +$1,800 MXN' |
-  | assign_key: 'returns_title', 'Política de Devoluciones' |
-  | assign_key: 'returns_description', '30 días para cambios y devoluciones' |
-  | assign_key: 'warranty_title', 'Garantía de Calidad' |
-  | assign_key: 'warranty_description', 'Garantía de por vida en acero inoxidable' -%}
+{%- assign contact_data = hash | assign_key: 'store_title', 'LostGenClub México' | assign_key: 'store_address', 'Kolonya Franklin 1851-10, Vigia' | assign_key: 'store_phone', '+52 1 55 1234 5678' | assign_key: 'store_whatsapp', '5215512345678' | assign_key: 'store_email', 'info@lostgenclub.com' | assign_key: 'store_hours', 'Lun-Vie: 9:00-18:00 | Sáb: 10:00-14:00' | assign_key: 'map_embed_url', '//maps.google.com/maps/place/Luster+Franklyn+1851-10+Col+Vigia' | assign_key: 'contact_form_title', 'Envíanos un Mensaje' | assign_key: 'contact_form_button', 'Enviar Mensaje' | assign_key: 'faq_title', 'Preguntas Frecuentes' | assign_key: 'faq_subtitle', 'Encuentra respuestas rápidas a preguntas comunes' | assign_key: 'office_hours_title', 'Horario de Atención' | assign_key: 'office_hours_description', 'Visita nuestro showroon premium' | assign_key: 'shipping_title', 'Política de Envío' | assign_key: 'shipping_description', 'Envío gratis en compras +$1,800 MXN' | assign_key: 'returns_title', 'Política de Devoluciones' | assign_key: 'returns_description', '30 días para cambios y devoluciones' | assign_key: 'warranty_title', 'Garantía de Calidad' | assign_key: 'warranty_description', 'Garantía de por vida en acero inoxidable' -%}
 
 <div class="contact-page py-5">
   <div class="container">
@@ -249,4 +230,47 @@
       });
     }
   });
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- assign contact_data = hash |
+      | assign_key: 'store_title', 'LostGenClub México' |
+      | assign_key: 'store_address', 'Kolonya Franklin 1851-10, Vigia' |
+      | assign_key: 'store_phone', '+52 1 55 1234 5678' |
+      | assign_key: 'store_whatsapp', '5215512345678' |
+      | assign_key: 'store_email', 'info@lostgenclub.com' |
+      | assign_key: 'store_hours', 'Lun-Vie: 9:00-18:00 | Sáb: 10:00-14:00' |
+      | assign_key: 'map_embed_url', '//maps.google.com/maps/place/Luster+Franklyn+1851-10+Col+Vigia' |
+      | assign_key: 'contact_form_title', 'Envíanos un Mensaje' |
+      | assign_key: 'contact_form_button', 'Enviar Mensaje' |
+      | assign_key: 'faq_title', 'Preguntas Frecuentes' |
+      | assign_key: 'faq_subtitle', 'Encuentra respuestas rápidas a preguntas comunes' |
+      | assign_key: 'office_hours_title', 'Horario de Atención' |
+      | assign_key: 'office_hours_description', 'Visita nuestro showroon premium' |
+      | assign_key: 'shipping_title', 'Política de Envío' |
+      | assign_key: 'shipping_description', 'Envío gratis en compras +$1,800 MXN' |
+      | assign_key: 'returns_title', 'Política de Devoluciones' |
+      | assign_key: 'returns_description', '30 días para cambios y devoluciones' |
+      | assign_key: 'warranty_title', 'Garantía de Calidad' |
+      | assign_key: 'warranty_description', 'Garantía de por vida en acero inoxidable' -%}
+  to: "{%- assign contact_data = hash | assign_key: 'store_title', 'LostGenClub México'
+    | assign_key: 'store_address', 'Kolonya Franklin 1851-10, Vigia' | assign_key:
+    'store_phone', '+52 1 55 1234 5678' | assign_key: 'store_whatsapp', '5215512345678'
+    | assign_key: 'store_email', 'info@lostgenclub.com' | assign_key: 'store_hours',
+    'Lun-Vie: 9:00-18:00 | Sáb: 10:00-14:00' | assign_key: 'map_embed_url', '//maps.google.com/maps/place/Luster+Franklyn+1851-10+Col+Vigia'
+    | assign_key: 'contact_form_title', 'Envíanos un Mensaje' | assign_key: 'contact_form_button',
+    'Enviar Mensaje' | assign_key: 'faq_title', 'Preguntas Frecuentes' | assign_key:
+    'faq_subtitle', 'Encuentra respuestas rápidas a preguntas comunes' | assign_key:
+    'office_hours_title', 'Horario de Atención' | assign_key: 'office_hours_description',
+    'Visita nuestro showroon premium' | assign_key: 'shipping_title', 'Política de
+    Envío' | assign_key: 'shipping_description', 'Envío gratis en compras +$1,800
+    MXN' | assign_key: 'returns_title', 'Política de Devoluciones' | assign_key: 'returns_description',
+    '30 días para cambios y devoluciones' | assign_key: 'warranty_title', 'Garantía
+    de Calidad' | assign_key: 'warranty_description', 'Garantía de por vida en acero
+    inoxidable' -%}"
+  position: 459..1697
+{%- endcomment -%}

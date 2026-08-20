@@ -39,9 +39,9 @@
             </div>
             <div class="col-2 col-md-2 text-center">
               <div class="input-group">
-                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateCartQty({{ item.key }}, {{ item.quantity - 1 }})">-</button>
+                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateCartQty({{ item.key }}, {{ item.quantity }})">-</button>
                 <input type="number" class="form-control form-control-sm text-center" value="{{ item.quantity }}" min="1" max="99" onchange="updateCartQty({{ item.key }}, this.value)">
-                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateCartQty({{ item.key }}, {{ item.quantity + 1 }})">+</button>
+                <button class="btn btn-outline-secondary btn-sm" type="button" onclick="updateCartQty({{ item.key }}, {{ item.quantity }})">+</button>
               </div>
             </div>
             <div class="col-2 col-md-2 text-center">
@@ -175,4 +175,16 @@
 
     window.open("https://wa.me/{{ settings.whatsapp_number }}?text=" + encodeURIComponent(message), '_blank');
   }
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ item.quantity - 1 }}"
+  to: "{{ item.quantity }}"
+  position: 1975..1994
+- from: "{{ item.quantity + 1 }}"
+  to: "{{ item.quantity }}"
+  position: 2311..2330
+{%- endcomment -%}

@@ -10,23 +10,7 @@
   ========================================
 {%- endcomment -%}
 
-{%- assign about_data = hash |
-  | assign_key: 'brand_story', 'Nacimos con la visión de crear joyas que duren toda la vida. Desde México para el mundo, cada pieza cuenta una historia de artesanía y pasión.' |
-  | assign_key: 'mission', 'Democratizar el lujo accesible con materiales premium y diseños atemporales.' |
-  | assign_key: 'founder_name', 'Fundador' |
-  | assign_key: 'founder_story', 'Después de años buscando joyas de calidad que resistieran el uso diario, decidí crear mi propia marca. Cada pieza es probada personalmente.' |
-  | assign_key: 'values', array: [
-    { | assign_key: 'title', 'Calidad' | | assign_key: 'icon', 'fa-gem' | | assign_key: 'desc', 'Materiales premium que duran toda la vida' },
-    { | assign_key: 'title', 'Autenticidad' | | assign_key: 'icon', 'fa-heart' | | assign_key: 'desc', 'Diseños originales, no copias' },
-    { | assign_key: 'title', 'Compromiso' | | assign_key: 'icon', 'fa-shield' | | assign_key: 'desc', 'Garantía de por vida en acero inoxidable' },
-    { | assign_key: 'title', 'Comunidad' | | assign_key: 'icon', 'fa-users' | | assign_key: 'desc', 'Más que clientes, una familia' }
-  ]
-| | assign_key: 'stats', array: [
-  { | assign_key: 'number', '10K+' | | assign_key: 'label', 'Clientes Satisfechos' },
-  { | assign_key: 'number', '50K+' | | assign_key: 'label', 'Piezas Entregadas' },
-  { | assign_key: 'number', '99%' | | assign_key: 'label', 'Tasa de Satisfacción' },
-  { | assign_key: 'number', '15+' | | assign_key: 'label', 'Países Atendidos' }
-] -%}
+{%- assign about_data = hash | assign_key: 'brand_story', 'Nacimos con la visión de crear joyas que duren toda la vida. Desde México para el mundo, cada pieza cuenta una historia de artesanía y pasión.' | assign_key: 'mission', 'Democratizar el lujo accesible con materiales premium y diseños atemporales.' | assign_key: 'founder_name', 'Fundador' | assign_key: 'founder_story', 'Después de años buscando joyas de calidad que resistieran el uso diario, decidí crear mi propia marca. Cada pieza es probada personalmente.' | assign_key: 'values', array: nil | assign_key: 'title', 'Calidad' | assign_key: 'icon', 'fa-gem' | assign_key: 'desc', 'Materiales premium que duran toda la vida', nil | assign_key: 'title', 'Autenticidad' | assign_key: 'icon', 'fa-heart' | assign_key: 'desc', 'Diseños originales, no copias', nil | assign_key: 'title', 'Compromiso' | assign_key: 'icon', 'fa-shield' | assign_key: 'desc', 'Garantía de por vida en acero inoxidable', nil | assign_key: 'title', 'Comunidad' | assign_key: 'icon', 'fa-users' | assign_key: 'desc', 'Más que clientes, una familia' | assign_key: 'stats', array: nil | assign_key: 'number', '10K+' | assign_key: 'label', 'Clientes Satisfechos', nil | assign_key: 'number', '50K+' | assign_key: 'label', 'Piezas Entregadas', nil | assign_key: 'number', '99%' | assign_key: 'label', 'Tasa de Satisfacción', nil | assign_key: 'number', '15+' | assign_key: 'label', 'Países Atendidos' -%}
 
 <div class="about-page py-5">
   <div class="container">
@@ -102,4 +86,47 @@
       </div>
     </section>
   </div>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- assign about_data = hash |
+      | assign_key: 'brand_story', 'Nacimos con la visión de crear joyas que duren toda la vida. Desde México para el mundo, cada pieza cuenta una historia de artesanía y pasión.' |
+      | assign_key: 'mission', 'Democratizar el lujo accesible con materiales premium y diseños atemporales.' |
+      | assign_key: 'founder_name', 'Fundador' |
+      | assign_key: 'founder_story', 'Después de años buscando joyas de calidad que resistieran el uso diario, decidí crear mi propia marca. Cada pieza es probada personalmente.' |
+      | assign_key: 'values', array: [
+        { | assign_key: 'title', 'Calidad' | | assign_key: 'icon', 'fa-gem' | | assign_key: 'desc', 'Materiales premium que duran toda la vida' },
+        { | assign_key: 'title', 'Autenticidad' | | assign_key: 'icon', 'fa-heart' | | assign_key: 'desc', 'Diseños originales, no copias' },
+        { | assign_key: 'title', 'Compromiso' | | assign_key: 'icon', 'fa-shield' | | assign_key: 'desc', 'Garantía de por vida en acero inoxidable' },
+        { | assign_key: 'title', 'Comunidad' | | assign_key: 'icon', 'fa-users' | | assign_key: 'desc', 'Más que clientes, una familia' }
+      ]
+    | | assign_key: 'stats', array: [
+      { | assign_key: 'number', '10K+' | | assign_key: 'label', 'Clientes Satisfechos' },
+      { | assign_key: 'number', '50K+' | | assign_key: 'label', 'Piezas Entregadas' },
+      { | assign_key: 'number', '99%' | | assign_key: 'label', 'Tasa de Satisfacción' },
+      { | assign_key: 'number', '15+' | | assign_key: 'label', 'Países Atendidos' }
+    ] -%}
+  to: "{%- assign about_data = hash | assign_key: 'brand_story', 'Nacimos con la visión
+    de crear joyas que duren toda la vida. Desde México para el mundo, cada pieza
+    cuenta una historia de artesanía y pasión.' | assign_key: 'mission', 'Democratizar
+    el lujo accesible con materiales premium y diseños atemporales.' | assign_key:
+    'founder_name', 'Fundador' | assign_key: 'founder_story', 'Después de años buscando
+    joyas de calidad que resistieran el uso diario, decidí crear mi propia marca.
+    Cada pieza es probada personalmente.' | assign_key: 'values', array: nil | assign_key:
+    'title', 'Calidad' | assign_key: 'icon', 'fa-gem' | assign_key: 'desc', 'Materiales
+    premium que duran toda la vida', nil | assign_key: 'title', 'Autenticidad' | assign_key:
+    'icon', 'fa-heart' | assign_key: 'desc', 'Diseños originales, no copias', nil
+    | assign_key: 'title', 'Compromiso' | assign_key: 'icon', 'fa-shield' | assign_key:
+    'desc', 'Garantía de por vida en acero inoxidable', nil | assign_key: 'title',
+    'Comunidad' | assign_key: 'icon', 'fa-users' | assign_key: 'desc', 'Más que clientes,
+    una familia' | assign_key: 'stats', array: nil | assign_key: 'number', '10K+'
+    | assign_key: 'label', 'Clientes Satisfechos', nil | assign_key: 'number', '50K+'
+    | assign_key: 'label', 'Piezas Entregadas', nil | assign_key: 'number', '99%'
+    | assign_key: 'label', 'Tasa de Satisfacción', nil | assign_key: 'number', '15+'
+    | assign_key: 'label', 'Países Atendidos' -%}"
+  position: 378..1812
+{%- endcomment -%}
