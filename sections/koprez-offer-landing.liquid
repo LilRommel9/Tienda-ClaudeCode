@@ -1,2 +1,36 @@
-{% comment %} Koprez Landing Section {% endcomment %}
-<div class="kp-landing"><h1>Koprez Offer</h1></div>
+{% comment %}
+  Koprez Pro Landing Page - High Conversion Architecture
+  Mobile-First / SSR Optimized
+{% endcomment %}
+
+<style>
+  .koprez-wrapper { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a; max-width: 800px; margin: 0 auto; }
+  .hero-section { text-align: center; padding: 40px 20px; background: #fff; }
+  .offer-card { border: 3px solid #000; border-radius: 16px; padding: 30px; margin: 20px 0; background: #fdfdfd; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+  .badge { background: #e31e24; color: #fff; padding: 5px 15px; font-weight: bold; text-transform: uppercase; border-radius: 4px; display: inline-block; margin-bottom: 15px; }
+  .price-main { font-size: 3rem; font-weight: 800; color: #e31e24; }
+  .btn-primary { display: block; background: #27ae60; color: #fff; padding: 20px; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 8px; margin-top: 20px; transition: 0.3s; }
+  .btn-primary:hover { background: #219150; transform: translateY(-2px); }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; text-align: left; }
+</style>
+
+<section class="koprez-wrapper">
+  <div class="hero-section">
+    <div class="badge">Buy 1 Get 1 Free</div>
+    <h1>Koprez® Foot Sleeves</h1>
+    <p>The ultimate structural support for tired, aching feet.</p>
+    
+    <div class="offer-card">
+      <div class="price-main">$19.99 <small style="font-size: 1rem; color: #666;">/ sleeve</small></div>
+      <p>Regular price $79.99. Save 75% today.</p>
+      <a href="/checkout" class="btn-primary">Claim My Offer</a>
+    </div>
+
+    <div class="features">
+      <div>✅ Immediate relief</div>
+      <div>✅ 30-Day Guarantee</div>
+      <div>✅ 500k+ Happy Customers</div>
+      <div>✅ Medical Grade Fabric</div>
+    </div>
+  </div>
+</section>
