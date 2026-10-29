@@ -1,22 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "brand_name": "Velvet Dreams",
-    "brand_tagline": "Comodidad y estilo en casa",
-    "brand_description": "Conjuntos loungewear de terciopelo suave. Combina estilo y máximo confort para tus días de descanso.",
-    "color_background": "#faf9f6",
-    "color_primary": "#e8b4b8",
-    "color_secondary": "#eed6d3",
-    "color_text_main": "#333333",
-    "color_text_muted": "#7a7a7a",
-    "whatsapp_number": "5215512345678",
-    "email": "hello@velvetdreams.com",
-    "free_shipping_threshold": 899,
-    "material_note": "Terciopelo premium ultrasuave"
-  },
-  "presets": {
-    "Velvet Dreams Default": {
-      "brand_name": "Velvet Dreams",
-      "color_background": "#faf9f6"
+    "content_for_index": [],
+    "blocks": {
+      "16278478101612877664": {
+        "type": "shopify://apps/pagefly-ai-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": false,
+        "settings": {}
+      }
     }
   }
 }
